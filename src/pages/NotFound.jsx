@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainPage = () => {
+const NotFound = () => {
     return (
         <div>
             <header>404 Page not found!</header>
@@ -9,4 +9,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default NotFound;

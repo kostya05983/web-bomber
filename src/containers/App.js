@@ -9,9 +9,9 @@ import {
 } from "react-router-dom";
 
 //Pages
-import NavPage from './pages/navPage';
-import SchemePage from './pages/schemePage';
-import EmptyPage from './pages/index';
+import Navigation from '../pages/Navigation';
+import Schemes from '../pages/Schemes';
+import EmptyPage from '../pages/NotFound';
 
 class App extends Component {
 
@@ -19,8 +19,8 @@ class App extends Component {
     return (
         <Router>
           <Switch>
-            <Route exact path='/' component={NavPage}/>
-            <Route exact path='/schemes' component={SchemePage}/>
+            <Route exact path='/' component={Navigation}/>
+            <Route exact path='/schemes' component={Schemes}/>
             <Route path='/404' component={EmptyPage}/>
             <Redirect to='/404'/>
           </Switch>
