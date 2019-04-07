@@ -1,0 +1,64 @@
+.navpage-container{
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+.navpage-container .pane{
+    height: 56px;
+    padding: 8px 16px 8px 16px;
+    background-color: #007bff;
+}
+
+.navpage-container .pane .element{
+    display: flex;
+    align-items: center
+}
+
+.navpage-container .pane .element .option{
+    text-decoration: none;
+    color: white;
+}
+
+.navpage-container .sections{
+    margin-bottom: 2%;
+}
+
+.navpage-container .sections .section-holder{
+    margin: 0;
+    padding: 3% 7% 3% 7%;
+}
+
+.navpage-container .sections .section-holder .section{
+    width: 33%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.navpage-container .sections .section-holder .section .section-link{
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.navpage-container .sections .section-holder .section .card-img-top{
+    padding: 9% 21% 9% 21%;
+    max-height: 285px;
+}
+
+.navpage-container .sections .section-holder .section .card-header{
+    background-color: #007bff;
+}
+
+.navpage-container .sections .section-holder .section .card-body{
+
+}
+
+.navpage-container .subsections{
+
+}
+
+.navpage-container .subsections .subsection{
+    margin-bottom: 1%;
+}
