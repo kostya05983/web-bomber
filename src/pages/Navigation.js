@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 
 import NavigationBar from '../components/NavigationBar'
 import ElementsBar from '../components/ElementsBar/ElementsBar'
-import OptionCard from '../components/OptionCard'
-import SubsectionCard from '../components/SubsectionCard'
+import OptionCard from '../components/OptionCard/OptionCard'
+import SubsectionCard from '../components/SubsectionCard/SubsectionCard'
 
 class Navigation extends Component{
 

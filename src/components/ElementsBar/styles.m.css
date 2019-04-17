@@ -1,4 +1,4 @@
-.pane{
+:local(.pane) {
     display: flex;
     justify-content: center;
     height: 56px;
@@ -6,12 +6,12 @@
     background-color: #007bff;
 }
 
-.pane .element{
+:local(.pane .element) {
     display: flex;
     align-items: center
 }
 
-.pane .element .option{
+:local(.pane .element .option) {
     text-decoration: none;
     color: white;
 }
