@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import {
-    CardDeck, Col, Container,Row
+    CardDeck, /*Col,*/ Container,Row
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+
+import * as NavFunctions from '../store/NavigationPart/actions';
+
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 import NavigationBar from '../components/NavigationBar'
 import ElementsBar from '../components/ElementsBar/ElementsBar'
@@ -16,26 +21,30 @@ import SubsectionCard from '../components/SubsectionCard'
 
 class Navigation extends Component{
 
-    constructor(props) {
-        super(props);
-        this.sampleText = 'Some quick example text to build on the card title and make up the bulk of the card\'s content.';
-        this.sampleImg = 'https://png.pngtree.com/svg/20161215/json_22047.png';
+    // constructor(props) {
+    //     super(props);
+    //     this.sampleText = '';
+    //     this.sampleImg = '';
 
-        this.toggle = this.toggle.bind(this);
+    //     this.toggle = this.toggle.bind(this);
 
-        this.state = {
-            isLoading: true,
-            isOpen: false,
-        };
-    }
+    //     this.state = {
+    //         isLoading: true,
+    //         isOpen: false,
+    //     };
+    // }
 
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
+    // toggle() {
+    //     this.setState({
+    //         isOpen: !this.state.isOpen
+    //     });
+    // }
+    // For toggle element for open: use the props container which have NavFunction method have contain toogle method
+
 
     render() {
+        const {sample_text, sample_img} = this.props.navStore;
+        console.log(this.props.navStore)
         return (
             <div className="nav-page">
                 <NavigationBar title='Bomber'/>
@@ -59,4 +68,16 @@ class Navigation extends Component{
     }
 }
 
-export default Navigation;
+function GlobalStoreToProps(state){
+    return {
+        navStore: state.NS_navigationState,
+    }
+}
+
+function DispatchActionsToProps(dispatch){
+    return {
+        navFunctions: bindActionCreators(NavFunctions, dispatch)
+    }
+}
+
+export default connect(GlobalStoreToProps, DispatchActionsToProps)(Navigation);

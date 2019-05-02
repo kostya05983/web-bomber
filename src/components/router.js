@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
   Redirect
 } from "react-router-dom";
 
@@ -13,9 +12,7 @@ import Navigation from '../pages/Navigation';
 import Schemes from '../pages/Schemes';
 import EmptyPage from '../pages/NotFound';
 
-class App extends Component {
-
-  render() {
+export default function Routers(){
     return (
         <Router>
           <Switch>
@@ -27,6 +24,3 @@ class App extends Component {
         </Router>
     );
   }
-}
-
-export default App;
