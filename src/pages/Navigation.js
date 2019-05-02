@@ -6,13 +6,9 @@ import { Link } from 'react-router-dom'
 
 import NavigationBar from '../components/NavigationBar'
 import ElementsBar from '../components/ElementsBar/ElementsBar'
-<<<<<<< HEAD
+
 import OptionCard from '../components/OptionCard/OptionCard'
 import SubsectionCard from '../components/SubsectionCard/SubsectionCard'
-=======
-import OptionCard from '../components/OptionCard'
-import SubsectionCard from '../components/SubsectionCard'
->>>>>>> master
 
 class Navigation extends Component{
 
@@ -43,15 +39,14 @@ class Navigation extends Component{
                     <ElementsBar/>
                     <Row className="justify-content-md-center sections">
                         <CardDeck className="section-holder">
-                            <OptionCard title='Title' text={this.sampleText} img={this.sampleImg}/>
-                            <OptionCard title='Title' text={this.sampleText} img={this.sampleImg}/>
-                            <OptionCard title='Title' text={this.sampleText} img={this.sampleImg}/>
+                            <OptionCard title='Devices' text="Nearest available devices" img={this.sampleImg}/>
+                            <OptionCard title='Scripts' text="Creating and editing test scripts" img={this.sampleImg}/>
+                            <OptionCard title='Schemes' text="Schemas for the selected protocol" img={this.sampleImg}/>
                         </CardDeck>
                     </Row>
                     <Row className="justify-content-md-center subsections">
-                        <SubsectionCard title='Title' text={this.sampleText}/>
-                        <SubsectionCard title='Title' text={this.sampleText}/>
-                        <SubsectionCard title='Title' text={this.sampleText}/>
+                        <SubsectionCard title='Statistics' text="Test statistics. Display graphs, dynamics of device testing processes."/>
+
                     </Row>
                 </Container>
             </div>
