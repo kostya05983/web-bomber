@@ -1,0 +1,17 @@
+:local(.pane) {
+    display: flex;
+    justify-content: center;
+    height: 56px;
+    padding: 8px 16px 8px 16px;
+    background-color: #007bff;
+}
+
+:local(.pane .element) {
+    display: flex;
+    align-items: center
+}
+
+:local(.pane .element .option) {
+    text-decoration: none;
+    color: white;
+}
