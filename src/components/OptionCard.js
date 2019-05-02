@@ -4,10 +4,6 @@ import {Card} from "react-bootstrap";
 
 
 export default class OptionCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Card className="text-center section">

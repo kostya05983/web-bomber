@@ -1,0 +1,25 @@
+:local(.section) {
+    width: 33%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+:local(.section_link) {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+:local(.section .card_img_top) {
+    padding: 9% 21% 9% 21%;
+    max-height: 285px;
+}
+
+:local(.section .card_header) {
+    background-color: #007bff;
+}
+
+:local(.section .card_body) {
+
+}

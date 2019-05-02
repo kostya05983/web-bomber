@@ -3,6 +3,8 @@
     max-width: 100%;
     margin: 0;
 }
+<<<<<<< HEAD
+=======
 
 .navpage-container .pane{
     height: 56px;
@@ -20,6 +22,7 @@
     color: white;
 }
 
+>>>>>>> master
 .navpage-container .sections{
     margin-bottom: 2%;
 }
@@ -29,6 +32,10 @@
     padding: 3% 7% 3% 7%;
 }
 
+<<<<<<< HEAD
+.navpage-container .subsections{
+
+=======
 .navpage-container .sections .section-holder .section{
     width: 33%;
     margin-left: 1%;
@@ -61,4 +68,5 @@
 
 .navpage-container .subsections .subsection{
     margin-bottom: 1%;
+>>>>>>> master
 }
