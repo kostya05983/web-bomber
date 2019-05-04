@@ -11,13 +11,9 @@ import {connect} from 'react-redux';
 
 import NavigationBar from '../components/NavigationBar'
 import ElementsBar from '../components/ElementsBar/ElementsBar'
-<<<<<<< HEAD
 import OptionCard from '../components/OptionCard/OptionCard'
 import SubsectionCard from '../components/SubsectionCard/SubsectionCard'
-=======
-import OptionCard from '../components/OptionCard'
-import SubsectionCard from '../components/SubsectionCard'
->>>>>>> master
+
 
 class Navigation extends Component{
 
