@@ -13,7 +13,7 @@ export function login(loginRequest) {
 
             const fetchLogin = AuthService.login(loginRequest);
 
-            dispatch({type: types.LOGIN, payload: fetchLogin})
+            dispatch({type: types.LOGIN, accessToken: fetchLogin})
         } catch (error) {
             console.error(error)
         }
@@ -25,14 +25,16 @@ export function login(loginRequest) {
  * @param signupRequest - payload of signup request
  */
 export function signup(signupRequest) {
-    try {
-        console.log("Dispatch signup");
+    return async (dispatch, getState) => {
+        try {
+            console.log("Dispatch signup");
 
-        const fetchSignUp = AuthService.signup(signupRequest);
+            const fetchSignUp = AuthService.signup(signupRequest);
 
-        dispatch({type: types.SIGNUP, payload: fetchSignUp})
-    } catch (error) {
-        console.error(error)
+            dispatch({type: types.SIGNUP, payload: fetchSignUp})
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
 
@@ -40,13 +42,25 @@ export function signup(signupRequest) {
  * Get current auth user from server
  */
 export function getCurrentUser() {
-    try {
-        console.log("Dispatch getCurrentUser");
+    return async (dispatch, getState) => {
+        try {
+            console.log("Dispatch getCurrentUser");
 
-        const fetchedUser = AuthService.getCurrentUser();
+            const fetchedUser = AuthService.getCurrentUser();
 
-        dispatch({type: types.GET_CURRENT_USER, payload: fetchedUser})
-    } catch (error) {
-        console.error(error)
+            dispatch({type: types.GET_CURRENT_USER, currentUser: fetchedUser})
+        } catch (error) {
+            console.error(error)
+        }
+    }
+}
+
+/**
+ * Inverse state of app for user
+ * @returns {{payload: null, type: string}}
+ */
+export function inverseAuthenticated() {
+    return {
+        type: types.REVERSE_AUTHENTICATED, payload: null,
     }
 }

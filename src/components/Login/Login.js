@@ -9,6 +9,8 @@ import githubLogo from '../../assets/github-logo.png';
 import Alert from 'react-s-alert';
 import {connect} from 'react-redux'
 import autoBind from "react-autobind";
+import * as AuthSelectors from '../../store/Auth/reducer'
+import * as AuthActions from '../../store/Auth/actions'
 
 class Login extends Component {
 
@@ -33,16 +35,12 @@ class Login extends Component {
         }
     }
 
-    changeOnSignUp() {
-        this.props.dispatch(headersActions.updateHeader("SignUp"))
-    }
-
     render() {
         if (this.props.authenticated) {
             console.log(this.props);
             return <Redirect
                 to={{
-                    pathname: "/projects",
+                    pathname: "/",
                     state: {from: this.props.location}
                 }}/>;
         }
@@ -56,8 +54,7 @@ class Login extends Component {
                         <span className="or-text">OR</span>
                     </div>
                     <LoginForm {...this.props} />
-                    <span className="signup-link" onClick={this.changeOnSignUp}>New user? <Link to="/signup"
-                                                                                                onClick={this.changeOnSignUp}>Sign up!</Link></span>
+                    <span className="signup-link">New user? <Link to="/signup">Sign up!</Link></span>
                 </div>
             </div>
         );
@@ -106,13 +103,12 @@ class LoginForm extends Component {
 
         const loginRequest = Object.assign({}, this.state);
 
-        login(loginRequest)
-            .then(response => {
-                localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+        AuthActions.login(loginRequest).then(response => {
+            localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+            Alert.success("You're successfully logged in!");
 
-                Alert.success("You're successfully logged in!");
-                this.props.history.push("/projects");
-            }).catch(error => {
+            this.props.history.push("/")
+        }).catch(error => {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
         });
     }
@@ -138,4 +134,11 @@ class LoginForm extends Component {
     }
 }
 
-export default connect()(Login)
+
+function MapStateToProps(state) {
+    return {
+        isAuthenticated: AuthSelectors.isAuthenticated(state)
+    }
+}
+
+export default connect(MapStateToProps)(Login)
