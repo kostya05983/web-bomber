@@ -5,7 +5,7 @@ import {API_BASE_URL} from "./constants";
  * Class contains auth function for login,signup and so on
  * @author kostya05983
  */
-class AuthBomberService {
+export default class AuthBomberService {
 
     request = (options) => {
         const headers = new Headers({
