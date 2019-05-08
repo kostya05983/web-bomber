@@ -5,7 +5,7 @@ import Alert from "react-s-alert";
 import {ACCESS_TOKEN} from "../../services/constants";
 import * as LoginFormActions from '../../store/LoginForm/actions';
 import {connect} from 'react-redux';
-import LoginSelectors from '../../store/LoginForm/reducer'
+import * as LoginSelectors from '../../store/LoginForm/reducer'
 
 /**
  * Login form for input password, email, e.t.c
@@ -13,8 +13,8 @@ import LoginSelectors from '../../store/LoginForm/reducer'
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.handleInputEmail = this.handleInputEmail(this);
-        this.handleInputPassword = this.handleInputPassword(this);
+        this.handleInputEmail = this.handleInputEmail.bind(this);
+        this.handleInputPassword = this.handleInputPassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -31,16 +31,9 @@ class LoginForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        const loginRequest = Object.assign({}, this.state);
-
-        AuthActions.login(loginRequest).then(response => {
-            localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-            Alert.success("You're successfully logged in!");
-
-            this.props.history.push("/")
-        }).catch(error => {
-            Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
-        });
+        const loginRequest = Object.assign({}, this.props);
+        console.log("LoginRequest", loginRequest)
+        this.props.dispatch(AuthActions.login(loginRequest))
     }
 
     render() {
@@ -49,12 +42,12 @@ class LoginForm extends Component {
                 <div className="form-item">
                     <input type="email" name="email"
                            className="form-control" placeholder="Email"
-                           value={this.state.email} onChange={this.handleInputEmail} required/>
+                           value={this.props.email} onChange={this.handleInputEmail} required/>
                 </div>
                 <div className="form-item">
                     <input type="password" name="password"
                            className="form-control" placeholder="Password"
-                           value={this.state.password} onChange={this.handleInputPassword} required/>
+                           value={this.props.password} onChange={this.handleInputPassword} required/>
                 </div>
                 <div className="form-item">
                     <button type="submit" className="btn btn-block btn-primary">Login</button>
@@ -66,8 +59,8 @@ class LoginForm extends Component {
 
 function MapStateToProps(state) {
     return {
-        email: LoginSelectors.email,
-        password: LoginSelectors.password
+        email: LoginSelectors.getEmail(state),
+        password: LoginSelectors.getPassword(state)
     }
 }
 

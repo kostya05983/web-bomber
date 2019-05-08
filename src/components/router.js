@@ -6,7 +6,7 @@ import {
     Switch,
     Redirect
 } from "react-router-dom";
-import PrivateRoute from 'PrivateRouter'
+import PrivateRoute from './PrivateRouter'
 
 import Navigation from '../pages/Navigation';
 import Schemes from '../pages/Schemes';
@@ -18,13 +18,11 @@ export default function Routers() {
     return (
         <Router>
             <Switch>
-                <Route exact path='/' component={Navigation}/>
+                <PrivateRoute exact path='/' component={Navigation}/>
                 <PrivateRoute exact path='/schemes' component={Schemes}/>
                 <PrivateRoute path='/404' component={EmptyPage}/>
-                <Route path='/login'
-                       render={<Login/>}/>
-                <Route path='/signup'
-                       render={<Signup/>}/>
+                <Route path='/login'><Login/></Route>
+                <Route path='/signup'> <Signup/></Route>
 
                 <Redirect to='/404'/>
             </Switch>

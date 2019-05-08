@@ -13,7 +13,9 @@ export function login(loginRequest) {
 
             const fetchLogin = AuthService.login(loginRequest);
 
-            dispatch({type: types.LOGIN, accessToken: fetchLogin})
+            let response = await fetchLogin;
+
+            dispatch({type: types.LOGIN, accessToken: response})
         } catch (error) {
             console.error(error)
         }
@@ -31,7 +33,11 @@ export function signup(signupRequest) {
 
             const fetchSignUp = AuthService.signup(signupRequest);
 
-            dispatch({type: types.SIGNUP, payload: fetchSignUp})
+            console.log("Fetched")
+
+            let response = await fetchSignUp;
+
+            dispatch({type: types.SIGNUP, payload: response})
         } catch (error) {
             console.error(error)
         }

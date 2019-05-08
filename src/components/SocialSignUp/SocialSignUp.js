@@ -5,7 +5,7 @@ import githubLogo from "../../assets/github-logo.png";
 import React from "react";
 import {GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL} from "../../services/constants";
 
-class SocialSignup extends Component {
+export default class SocialSignup extends Component {
     render() {
         return (
             <div className="social-signup">

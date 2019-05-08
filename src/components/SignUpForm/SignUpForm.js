@@ -37,15 +37,17 @@ class SignupForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        const signUpRequest = Object.assign({}, this.state);
-
-        AuthActions.signup(signUpRequest)
-            .then(response => {
-                Alert.success("You're successfully registered. Please login to continue!");
-                this.props.history.push("/login");
-            }).catch(error => {
-            Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
-        });
+        const signUpRequest = Object.assign({}, this.props);
+        console.log("Request",signUpRequest)
+        this.props.dispatch(AuthActions.signup(signUpRequest))
+        // this.props.dispatch(AuthActions.signup(signUpRequest)
+        //     .then(response => {
+        //         console.log("SingUp");
+        //         Alert.success("You're successfully registered. Please login to continue!");
+        //         this.props.history.push("/login");
+        //     }).catch(error => {
+        //         Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
+        //     }));
     }
 
     render() {
@@ -54,17 +56,17 @@ class SignupForm extends Component {
                 <div className="form-item">
                     <input type="text" name="name"
                            className="form-control" placeholder="Name"
-                           value={this.state.name} onChange={this.handleInputName} required/>
+                           value={this.props.name} onChange={this.handleInputName} required/>
                 </div>
                 <div className="form-item">
                     <input type="email" name="email"
                            className="form-control" placeholder="Email"
-                           value={this.state.email} onChange={this.handleInputEmail} required/>
+                           value={this.props.email} onChange={this.handleInputEmail} required/>
                 </div>
                 <div className="form-item">
                     <input type="password" name="password"
                            className="form-control" placeholder="Password"
-                           value={this.state.password} onChange={this.handleInputPassword} required/>
+                           value={this.props.password} onChange={this.handleInputPassword} required/>
                 </div>
                 <div className="form-item">
                     <button type="submit" className="btn btn-block btn-primary">Sign Up</button>

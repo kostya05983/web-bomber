@@ -1,4 +1,5 @@
 import {REVERSE_AUTHENTICATED, GET_CURRENT_USER, LOGIN, SIGNUP} from "./constants";
+import {ACCESS_TOKEN} from "../../services/constants";
 
 const initState = {
     currentUser: undefined,
@@ -7,14 +8,15 @@ const initState = {
 };
 
 export default function reducer(state = initState, action) {
-
-
     switch (action.type) {
         case LOGIN:
             console.log("Reduce login");
-            return {...state, accessToken: action.accessToken};
+            localStorage.setItem(ACCESS_TOKEN, action.accessToken);
+            console.log("After merge", {...state, accessToken: action.accessToken, isAuthenticated: true});
+            return {...state, accessToken: action.accessToken, isAuthenticated: true};
         case SIGNUP:
             console.log("Reduce signUp");
+            return {...state, payload: action.payload};
         case REVERSE_AUTHENTICATED:
             console.log("Reduce authentication");
             return {...state, isAuthenticated: !state.isAuthenticated};

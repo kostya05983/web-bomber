@@ -8,11 +8,11 @@ import * as AuthSelectors from '../store/Auth/reducer'
 import {connect} from 'react-redux';
 
 
-const PrivateRoute = ({component: Component, ...rest}) => (
+const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
     <Route
         {...rest}
         render={props =>
-            this.props.isAuthenticated ? (
+            isAuthenticated ? (
                 <Component {...rest} {...props} />
             ) : (
                 <Redirect
@@ -27,6 +27,7 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 );
 
 function MapStateToProps(state) {
+    console.log("isAuthenticated", AuthSelectors.isAuthenticated(state))
     return {
         isAuthenticated: AuthSelectors.isAuthenticated(state)
     }

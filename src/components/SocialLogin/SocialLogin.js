@@ -4,6 +4,7 @@ import googleLogo from "../../assets/google-logo.png";
 import fbLogo from "../../assets/fb-logo.png";
 import githubLogo from "../../assets/github-logo.png";
 import {GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL} from "../../services/constants";
+import "./SocialLogin.css"
 
 /**
  * Social panel of Login
