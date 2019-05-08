@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import {ACCESS_TOKEN} from '../../services/constants';
 import {Redirect} from 'react-router-dom'
+import * as AuthActions from '../../store/Auth/actions'
+import {connect} from 'react-redux'
+import autoBind from "react-autobind";
 
 class OAuth2RedirectHandler extends Component {
+    constructor(props) {
+        super(props);
+        autoBind(this)
+    }
+
     getUrlParameter(name) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
         var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -15,8 +23,10 @@ class OAuth2RedirectHandler extends Component {
         const token = this.getUrlParameter('token');
         const error = this.getUrlParameter('error');
 
+        console.log("Oauth redirect", token);
         if (token) {
             localStorage.setItem(ACCESS_TOKEN, token);
+            this.props.dispatch(AuthActions.inverseAuthenticated());
             return <Redirect to={{
                 pathname: "/",
                 state: {from: this.props.location}
@@ -33,4 +43,4 @@ class OAuth2RedirectHandler extends Component {
     }
 }
 
-export default OAuth2RedirectHandler;
+export default connect()(OAuth2RedirectHandler)

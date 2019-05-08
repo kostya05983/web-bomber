@@ -23,7 +23,11 @@ export default function reducer(state = initState, action) {
         case GET_CURRENT_USER:
             return {...state, currentUser: action.currentUser};
         default:
-            return state
+            let token = window.localStorage.getItem(ACCESS_TOKEN);
+            if (token != null) {
+                return {...state, isAuthenticated: true}
+            }
+            return {...state, isAuthenticated: false}
     }
 }
 
