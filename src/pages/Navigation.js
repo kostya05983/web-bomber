@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-    CardDeck, Container,Row
+    CardDeck, Container, Row
 } from 'react-bootstrap';
 
 import * as NavFunctions from '../store/NavigationPart/actions';
@@ -41,13 +41,13 @@ class Navigation extends Component {
     }
 }
 
-function GlobalStoreToProps(state){
+function GlobalStoreToProps(state) {
     return {
         navStore: state.NS_navigationState,
     }
 }
 
-function DispatchActionsToProps(dispatch){
+function DispatchActionsToProps(dispatch) {
     return {
         navFunctions: bindActionCreators(NavFunctions, dispatch)
     }
