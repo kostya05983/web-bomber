@@ -20,7 +20,6 @@ export default function Routers() {
         <Router>
             <Switch>
                 <PrivateRoute exact path='/' component={Navigation}/>
-                <PrivateRoute exact path='/schemes' component={Schemes}/>
                 <PrivateRoute path='/404' component={EmptyPage}/>
                 <Route path='/login'><Login/></Route>
                 <Route path='/signup'> <Signup/></Route>
