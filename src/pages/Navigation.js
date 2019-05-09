@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    CardDeck, /*Col,*/ Container,Row
+    CardDeck, Container,Row
 } from 'react-bootstrap';
 // import { Link } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ import OptionCard from '../components/OptionCard/OptionCard'
 import SubsectionCard from '../components/SubsectionCard/SubsectionCard'
 
 
-class Navigation extends Component{
+class Navigation extends Component {
 
     // constructor(props) {
     //     super(props);
@@ -40,17 +40,17 @@ class Navigation extends Component{
 
     render() {
         const {sample_text, sample_img} = this.props.navStore;
-        console.log(this.props.navStore)
+        console.log(this.props.navStore);
         return (
             <div className="nav-page">
                 <NavigationBar title='Bomber'/>
-                <Container className="navpage-container">
+                <Container className="container">
                     <ElementsBar/>
                     <Row className="justify-content-md-center sections">
                         <CardDeck className="section-holder">
-                            <OptionCard title='Devices' text="Nearest available devices" img={this.sampleImg}/>
-                            <OptionCard title='Scripts' text="Creating and editing test scripts" img={this.sampleImg}/>
-                            <OptionCard title='Schemes' text="Schemas for the selected protocol" img={this.sampleImg}/>
+                            <OptionCard link="/devices" title='Devices' text="Nearest available devices" img={this.sample_img}/>
+                            <OptionCard link="/scripts" title='Scripts' text="Creating and editing test scripts" img={this.sample_img}/>
+                            <OptionCard link="/schemes" title='Schemes' text="Schemas for the selected protocol" img={this.sample_img}/>
                         </CardDeck>
                     </Row>
                     <Row className="justify-content-md-center subsections">

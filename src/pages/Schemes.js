@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     Container,
 } from 'react-bootstrap';
-import {Link} from "react-router-dom";
 
 import NavigationBar from "../components/NavigationBar";
 import ElementsBar from "../components/ElementsBar/ElementsBar";

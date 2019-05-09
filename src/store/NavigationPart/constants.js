@@ -1,3 +1,3 @@
 const prefix = "NAVIGATION_STATE_";
 
-export const TOOGLE_CARD = prefix + "TOGGLE";
+export const TOGGLE_CARD = prefix + "TOGGLE";

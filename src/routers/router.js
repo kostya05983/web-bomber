@@ -11,6 +11,7 @@ import {
 import Navigation from '../pages/Navigation';
 import Schemes from '../pages/Schemes';
 import EmptyPage from '../pages/NotFound';
+import Devices from "../pages/Devices";
 
 export default function Routers(){
     return (
@@ -18,6 +19,7 @@ export default function Routers(){
           <Switch>
             <Route exact path='/' component={Navigation}/>
             <Route exact path='/schemes' component={Schemes}/>
+            <Route exact path='/devices' component={Devices}/>
             <Route path='/404' component={EmptyPage}/>
             <Redirect to='/404'/>
           </Switch>

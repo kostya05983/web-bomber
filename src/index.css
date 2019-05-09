@@ -1,18 +1,36 @@
-.navpage-container{
+.nav-page .container{
     width: 100%;
     max-width: 100%;
     margin: 0;
 }
 
-.navpage-container .sections{
+.nav-page .container .sections{
     margin-bottom: 2%;
 }
 
-.navpage-container .sections .section-holder{
+.nav-page .container .sections .section-holder{
     margin: 0;
     padding: 3% 7% 3% 7%;
 }
 
-.navpage-container .subsections{
+.nav-page .container .subsections{
 
+}
+
+.devices-page .container{
+
+}
+
+.devices-page .container .devices-row{
+    height: 32rem;
+    max-height: 32rem;
+}
+
+.devices-page .container .devices-col{
+    overflow-y: auto;
+    height: 100%;
+}
+
+.devices-page .container .devices-col::-webkit-scrollbar {
+    display: none;
 }
