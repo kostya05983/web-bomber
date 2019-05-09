@@ -15,21 +15,3 @@ export default function reduce(state = initState, action) {
             return state;
     }
 }
-
-/**
- * Selector for getting email address
- * @param state
- * @returns {*}
- */
-export function getEmail(state) {
-    return state.LF_loginState.email
-}
-
-/**
- * Selector for getting password
- * @param state
- * @returns {*}
- */
-export function getPassword(state) {
-    return state.LF_loginState.password
-}

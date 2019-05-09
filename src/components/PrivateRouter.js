@@ -4,7 +4,6 @@ import {
     Redirect
 } from "react-router-dom";
 
-import * as AuthSelectors from '../store/Auth/reducer'
 import {connect} from 'react-redux';
 
 
@@ -27,9 +26,9 @@ const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
 );
 
 function MapStateToProps(state) {
-    console.log("isAuthenticated", AuthSelectors.isAuthenticated(state))
+    console.log("isAuthenticated", state.AU_authState.isAuthenticated);
     return {
-        isAuthenticated: AuthSelectors.isAuthenticated(state)
+        isAuthenticated: state.AU_authState.isAuthenticated
     }
 }
 

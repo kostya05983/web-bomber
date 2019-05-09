@@ -1,53 +1,44 @@
 import {Component} from 'react';
 import React from 'react';
-import * as AuthActions from "../../store/Auth/actions";
-import Alert from "react-s-alert";
-import {ACCESS_TOKEN} from "../../services/constants";
-import * as LoginFormActions from '../../store/LoginForm/actions';
+import * as AuthFunctions from "../../store/Auth/actions";
+import * as LoginFunctions from '../../store/LoginForm/actions'
 import {connect} from 'react-redux';
-import * as LoginSelectors from '../../store/LoginForm/reducer'
+import {bindActionCreators} from "redux";
 
 /**
  * Login form for input password, email, e.t.c
  */
 class LoginForm extends Component {
-    constructor(props) {
-        super(props);
-        this.handleInputEmail = this.handleInputEmail.bind(this);
-        this.handleInputPassword = this.handleInputPassword.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
     handleInputEmail(event) {
         const inputValue = event.target.value;
-        this.props.dispatch(LoginFormActions.inputEmail(inputValue))
+        this.props.loginFunctions.inputEmail(inputValue);
     }
 
     handleInputPassword(event) {
         const inputValue = event.target.value;
-        this.props.dispatch(LoginFormActions.inputPassword(inputValue))
+        this.props.loginFunctions.inputPassword(inputValue);
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
         const loginRequest = Object.assign({}, this.props);
-        console.log("LoginRequest", loginRequest)
-        this.props.dispatch(AuthActions.login(loginRequest))
+        console.log("LoginRequest", loginRequest);
+        this.props.authFunctions.login(loginRequest);
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-item">
                     <input type="email" name="email"
                            className="form-control" placeholder="Email"
-                           value={this.props.email} onChange={this.handleInputEmail} required/>
+                           value={this.props.email} onChange={this.handleInputEmail.bind(this)} required/>
                 </div>
                 <div className="form-item">
                     <input type="password" name="password"
                            className="form-control" placeholder="Password"
-                           value={this.props.password} onChange={this.handleInputPassword} required/>
+                           value={this.props.password} onChange={this.handleInputPassword.bind(this)} required/>
                 </div>
                 <div className="form-item">
                     <button type="submit" className="btn btn-block btn-primary">Login</button>
@@ -57,11 +48,19 @@ class LoginForm extends Component {
     }
 }
 
-function MapStateToProps(state) {
+function DispatchActionsToProps(dispatch) {
     return {
-        email: LoginSelectors.getEmail(state),
-        password: LoginSelectors.getPassword(state)
+        loginFunctions: bindActionCreators(LoginFunctions, dispatch),
+        authFunctions: bindActionCreators(AuthFunctions, dispatch)
     }
 }
 
-export default connect(MapStateToProps)(LoginForm)
+
+function MapStateToProps(state) {
+    return {
+        email: state.LF_loginState.email,
+        password: state.LF_loginState.password
+    }
+}
+
+export default connect(MapStateToProps, DispatchActionsToProps)(LoginForm)

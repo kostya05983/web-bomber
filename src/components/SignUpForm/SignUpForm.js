@@ -1,72 +1,55 @@
 import {Component} from 'react';
-import Alert from "react-s-alert";
 import React from "react";
 import {connect} from 'react-redux';
-import * as SignUpSelectors from '../../store/SignUpForm/reducer'
-import * as SignUpActions from '../../store/SignUpForm/actions'
-import * as AuthActions from '../../store/Auth/actions'
+import * as SignUpFunctions from '../../store/SignUpForm/actions'
+import * as AuthFunctions from '../../store/Auth/actions'
+import {bindActionCreators} from "redux";
 
 /**
  * SignUp form for input name, email, password
  * @author kostya05983
  */
 class SignupForm extends Component {
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleInputName = this.handleInputName.bind(this);
-        this.handleInputEmail = this.handleInputEmail.bind(this);
-        this.handleInputPassword = this.handleInputPassword.bind(this);
-    }
-
     handleInputName(event) {
         const target = event.target;
-        this.props.dispatch(SignUpActions.inputName(target.value))
+        this.props.signUpFunctions.inputName(target.value);
     }
 
     handleInputEmail(event) {
         const target = event.target;
-        this.props.dispatch(SignUpActions.inputEmail(target.value))
+        this.props.signUpFunctions.inputEmail(target.value);
     }
 
     handleInputPassword(event) {
         const target = event.target;
-        this.props.dispatch(SignUpActions.inputPassword(target.value))
+        this.props.signUpFunctions.inputPassword(target.value);
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
         const signUpRequest = Object.assign({}, this.props);
-        console.log("Request",signUpRequest)
-        this.props.dispatch(AuthActions.signup(signUpRequest))
-        // this.props.dispatch(AuthActions.signup(signUpRequest)
-        //     .then(response => {
-        //         console.log("SingUp");
-        //         Alert.success("You're successfully registered. Please login to continue!");
-        //         this.props.history.push("/login");
-        //     }).catch(error => {
-        //         Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
-        //     }));
+        console.log("Request", signUpRequest);
+        this.props.authFunctions.signup(signUpRequest);
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-item">
                     <input type="text" name="name"
                            className="form-control" placeholder="Name"
-                           value={this.props.name} onChange={this.handleInputName} required/>
+                           value={this.props.name} onChange={this.handleInputName.bind(this)} required/>
                 </div>
                 <div className="form-item">
                     <input type="email" name="email"
                            className="form-control" placeholder="Email"
-                           value={this.props.email} onChange={this.handleInputEmail} required/>
+                           value={this.props.email} onChange={this.handleInputEmail.bind(this)} required/>
                 </div>
                 <div className="form-item">
                     <input type="password" name="password"
                            className="form-control" placeholder="Password"
-                           value={this.props.password} onChange={this.handleInputPassword} required/>
+                           value={this.props.password} onChange={this.handleInputPassword.bind(this)} required/>
                 </div>
                 <div className="form-item">
                     <button type="submit" className="btn btn-block btn-primary">Sign Up</button>
@@ -77,12 +60,19 @@ class SignupForm extends Component {
     }
 }
 
-function MapStateToProps(state) {
+function DispatchActionsToProps(dispatch) {
     return {
-        name: SignUpSelectors.getName(state),
-        email: SignUpSelectors.getEmail(state),
-        password: SignUpSelectors.getPassword(state)
+        signUpFunctions: bindActionCreators(SignUpFunctions, dispatch),
+        authFunctions: bindActionCreators(AuthFunctions, dispatch)
     }
 }
 
-export default connect(MapStateToProps)(SignupForm)
+function MapStateToProps(state) {
+    return {
+        name: state.SU_signUpState.name,
+        email: state.SU_signUpState.email,
+        password: state.SU_signUpState.password
+    }
+}
+
+export default connect(MapStateToProps, DispatchActionsToProps)(SignupForm)

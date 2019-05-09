@@ -30,21 +30,3 @@ export default function reducer(state = initState, action) {
             return {...state, isAuthenticated: false}
     }
 }
-
-/**
- * Selecter for get current state of auth
- * @param state
- * @returns {boolean}
- */
-export function isAuthenticated(state) {
-    return state.AU_authState.isAuthenticated
-}
-
-/**
- * Select current auth user
- * @param state
- * @returns {undefined|*}
- */
-export function selectCurrentUser(state) {
-    return state.AU_authState.currentUser
-}
