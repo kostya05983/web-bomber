@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     CardDeck, Container,Row
 } from 'react-bootstrap';
-// import { Link } from 'react-router-dom'
 
 import * as NavFunctions from '../store/NavigationPart/actions';
 
@@ -16,27 +15,6 @@ import SubsectionCard from '../components/SubsectionCard/SubsectionCard'
 
 
 class Navigation extends Component {
-
-    // constructor(props) {
-    //     super(props);
-    //     this.sampleText = '';
-    //     this.sampleImg = '';
-
-    //     this.toggle = this.toggle.bind(this);
-
-    //     this.state = {
-    //         isLoading: true,
-    //         isOpen: false,
-    //     };
-    // }
-
-    // toggle() {
-    //     this.setState({
-    //         isOpen: !this.state.isOpen
-    //     });
-    // }
-    // For toggle element for open: use the props container which have NavFunction method have contain toogle method
-
 
     render() {
         const {sample_text, sample_img} = this.props.navStore;
