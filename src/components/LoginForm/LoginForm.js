@@ -9,14 +9,18 @@ import {bindActionCreators} from "redux";
  * Login form for input password, email, e.t.c
  */
 class LoginForm extends Component {
-    handleInputEmail(event) {
-        const inputValue = event.target.value;
-        this.props.loginFunctions.inputEmail(inputValue);
-    }
 
-    handleInputPassword(event) {
-        const inputValue = event.target.value;
-        this.props.loginFunctions.inputPassword(inputValue);
+    handleInput(event) {
+        const target = event.target;
+        let action = target.getAttribute("action");
+        switch (action) {
+            case "email":
+                this.props.loginFunctions.inputEmail(target.value);
+                break;
+            case "password":
+                this.props.loginFunctions.inputPassword(target.value);
+                break;
+        }
     }
 
     handleSubmit(event) {
@@ -32,13 +36,15 @@ class LoginForm extends Component {
             <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-item">
                     <input type="email" name="email"
+                           action="email"
                            className="form-control" placeholder="Email"
-                           value={this.props.email} onChange={this.handleInputEmail.bind(this)} required/>
+                           value={this.props.email} onChange={this.handleInput.bind(this)} required/>
                 </div>
                 <div className="form-item">
                     <input type="password" name="password"
+                           action="password"
                            className="form-control" placeholder="Password"
-                           value={this.props.password} onChange={this.handleInputPassword.bind(this)} required/>
+                           value={this.props.password} onChange={this.handleInput.bind(this)} required/>
                 </div>
                 <div className="form-item">
                     <button type="submit" className="btn btn-block btn-primary">Login</button>

@@ -9,7 +9,6 @@ import {
 import PrivateRoute from './PrivateRouter'
 
 import Navigation from '../pages/Navigation';
-import Schemes from '../pages/Schemes';
 import EmptyPage from '../pages/NotFound';
 import Login from './Login/Login.js'
 import Signup from "./SignUp/SignUp";
