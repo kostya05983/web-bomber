@@ -1,8 +1,8 @@
-import { TOOGLE_CARD } from "./constants";
+import { TOGGLE_CARD } from "./constants";
 
 export function toggle(){
     return {
-        "type": TOOGLE_CARD,
+        "type": TOGGLE_CARD,
         "payload": null
     }
 }

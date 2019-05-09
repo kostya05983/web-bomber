@@ -1,5 +1,6 @@
 import {Button, Form, FormControl, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 
 export default class NavigationBar extends Component {
 
@@ -42,3 +43,7 @@ export default class NavigationBar extends Component {
         );
     }
 }
+
+NavigationBar.propTypes = {
+    title: PropTypes.string.isRequired
+};

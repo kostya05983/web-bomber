@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-import Routers from './components/router';
+import Routers from './routers/router';
 import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux';

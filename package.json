@@ -5,9 +5,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "latest",
-    "react": "^16.8.4",
+    "react": "latest",
     "react-autobind": "^1.0.6",
-    "react-bootstrap": "^1.0.0-beta.6",
+    "react-bootstrap": "latest",
     "react-dom": "^16.8.4",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",

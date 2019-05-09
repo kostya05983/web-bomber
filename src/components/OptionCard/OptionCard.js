@@ -12,7 +12,7 @@ export default class OptionCard extends Component {
     render() {
         return (
             <Card className={"text-center" && styles.section}>
-                <Link to="/schemes" className={styles.section_link}/>
+                <Link to={this.props.link} className={styles.section_link}/>
                 <Card.Header className={styles.card_header}/>
                 <Card.Img className={styles.card_img_top} variant="top" src={this.props.img} />
                 <Card.Body className={styles.card_body}>
