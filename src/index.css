@@ -1,4 +1,4 @@
-.nav-page .container{
+.container{
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -17,13 +17,10 @@
 
 }
 
-.devices-page .container{
-
-}
-
 .devices-page .container .devices-row{
-    height: 32rem;
-    max-height: 32rem;
+    padding: 2rem 4rem 0 4rem;
+    height: 28.7rem;
+    max-height: 28.7rem;
 }
 
 .devices-page .container .devices-col{

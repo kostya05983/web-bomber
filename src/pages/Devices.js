@@ -7,6 +7,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import DevicesList from "../components/ItemList/ItemList";
 import {Col, Container, Row} from "react-bootstrap";
+import ElementsBar from "../components/ElementsBar/ElementsBar";
 
 const devices = [
     { id: 1, title: "127.0.0.1", subtitle: "asdasd", time:"4:20" },
@@ -24,7 +25,8 @@ class Devices extends Component {
         return(
             <div className="devices-page">
                 <NavigationBar title='Bomber'/>
-                <Container className="container pt-4">
+                <Container>
+                    <ElementsBar/>
                     <Row className="devices-row">
                         <Col className="devices-col">
                             <DevicesList items={devices}/>
