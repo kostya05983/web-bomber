@@ -14,6 +14,7 @@ import Login from '../components/Login/Login.js'
 import Signup from "../components/SignUp/SignUp";
 import OAuth2RedirectHandler from "../components/oauth2/OAuth2RedirectHandler";
 import Devices from "../pages/Devices";
+import Scripts from "../pages/Scripts";
 
 export default function Routers() {
     return (
@@ -24,6 +25,8 @@ export default function Routers() {
                 <Route path='/login'><Login/></Route>
                 <Route path='/signup'> <Signup/></Route>
                 <PrivateRoute exact path='/devices' component={Devices}/>
+                <PrivateRoute exact path='/schemes' component={Schemes}/>
+                <PrivateRoute exact path='/scripts' component={Scripts}/>
                 <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
                 <Redirect to='/404'/>
             </Switch>
