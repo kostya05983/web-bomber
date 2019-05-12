@@ -12,9 +12,6 @@ class AuthBomberService {
      * @returns {}
      */
     async getCurrentUser() {
-        if (!localStorage.getItem(ACCESS_TOKEN)) {
-            return Promise.reject("No access token set.");
-        }
         return await request({
             url: API_BASE_URL + "/user/me",
             method: 'GET'
