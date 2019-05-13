@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Container,
 } from 'react-bootstrap';
+import {connect} from 'react-redux';
+import * as ScriptsFunctions from '../store/Scripts/actions'
 
 import NavigationBar from "../components/NavigationBar";
 import ElementsBar from "../components/ElementsBar/ElementsBar";
 import FloatingButton from "../components/FloatingButton/FloatingButton";
 import GridWrapper from "../components/Grid/GridWrapper";
+import {bindActionCreators} from "redux";
+import scriptImage from '../assets/codepunk-logo-2018-square-black.png'
 
-const scriptImage = "https://codepunk.io/content/images/2018/06/codepunk-logo-2018-square-black.png";
-const items = [
-    { id: 1, link: "/scripts", name: "Script",img: scriptImage},
-    { id: 2, link: "/scripts",name: "Script",img: scriptImage},
-    { id: 3, link: "/scripts",name: "Script",img: scriptImage},
-    { id: 4, link: "/scripts",name: "Script",img: scriptImage},
-    { id: 5, link: "/scripts",name: "Script",img: scriptImage},
-    { id: 6, link: "/scripts",name: "Script",img: scriptImage},
-    { id: 7, link: "/scripts",name: "Script",img: scriptImage},
-    { id: 8, link: "/scripts",name: "Script",img: scriptImage}
-];
 
-class Scripts extends Component{
+class Scripts extends Component {
+
+    componentDidMount() {
+        this.props.scriptsFunctions.fetchedScripts(0, 100)
+    }
 
     render() {
         return (
@@ -29,11 +26,23 @@ class Scripts extends Component{
                 <Container>
                     <ElementsBar/>
                     <FloatingButton link="/scripts"/>
-                    <GridWrapper items={items}/>
+                    <GridWrapper img={scriptImage} items={this.props.scriptsStore.scripts}/>
                 </Container>
             </div>
         );
     }
 }
 
-export default Scripts;
+function GlobalStateToProps(state) {
+    return {
+        scriptsStore: state.SC_scriptsState,
+    }
+}
+
+function DispatchActionsToProps(dispatch) {
+    return {
+        scriptsFunctions: bindActionCreators(ScriptsFunctions, dispatch)
+    }
+}
+
+export default connect(GlobalStateToProps, DispatchActionsToProps)(Scripts)

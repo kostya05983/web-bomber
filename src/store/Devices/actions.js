@@ -16,6 +16,8 @@ export function fetchedDevices(offset, limit) {
 
             let response = await fetchedDevices;
 
+            console.log("Dispatch response", response);
+
             dispatch({type: types.FETCHED_DEVICE, payload: response})
         } catch (error) {
             console.error(error)

@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Container,
 } from 'react-bootstrap';
 
+import {connect} from 'react-redux';
+import * as SchemesFunctions from '../store/Schemes/actions'
 import NavigationBar from "../components/NavigationBar";
 import ElementsBar from "../components/ElementsBar/ElementsBar";
 import FloatingButton from "../components/FloatingButton/FloatingButton";
 import GridWrapper from "../components/Grid/GridWrapper";
+import {bindActionCreators} from "redux";
+import schemeImage from '../assets/Editing-Drafting-Compass-icon.png'
 
-// TODO: Somehow set the same image to all scheme items in grid in more efficient way
-const schemeImage = "http://icons.iconarchive.com/icons/icons8/ios7/128/Editing-Drafting-Compass-icon.png";
-const items = [
-    { id: 1, link: "/schemes",name: "Scheme",img: schemeImage},
-    { id: 2, link: "/schemes",name: "Scheme",img: schemeImage},
-    { id: 3, link: "/schemes",name: "Scheme",img: schemeImage},
-    { id: 4, link: "/schemes",name: "Scheme",img: schemeImage},
-    { id: 5, link: "/schemes",name: "Scheme",img: schemeImage},
-    { id: 6, link: "/schemes",name: "Scheme",img: schemeImage},
-    { id: 7, link: "/schemes",name: "Scheme",img: schemeImage},
-    { id: 8, link: "/schemes",name: "Scheme",img: schemeImage}
-];
+class Schemes extends Component {
 
-class Schemes extends Component{
+    componentDidMount() {
+        this.props.schemesFunctions.fetchedSchemes(0, 100)
+    }
 
     render() {
         return (
@@ -30,11 +25,23 @@ class Schemes extends Component{
                 <Container>
                     <ElementsBar/>
                     <FloatingButton link="/schemes"/>
-                    <GridWrapper items={items}/>
+                    <GridWrapper img={schemeImage} items={this.props.schemesStore.schemes}/>
                 </Container>
             </div>
         );
     }
 }
 
-export default Schemes;
+function GlobalStateToProps(state) {
+    return {
+        schemesStore: state.SC_schemesState,
+    }
+}
+
+function DispatchActionsToProps(dispatch) {
+    return {
+        schemesFunctions: bindActionCreators(SchemesFunctions, dispatch)
+    }
+}
+
+export default connect(GlobalStateToProps, DispatchActionsToProps)(Schemes);

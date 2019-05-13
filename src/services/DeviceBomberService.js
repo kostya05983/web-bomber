@@ -1,4 +1,5 @@
 import {API_BASE_URL} from "./constants";
+import request from "./Request";
 
 class DeviceService {
 
@@ -10,7 +11,7 @@ class DeviceService {
      */
     async getDevices(offset, limit) {
         return await request({
-            url: API_BASE_URL+`/devices?offset=${offset}&limit=${limit}`,
+            url: API_BASE_URL+`/devicesAll?offset=${offset}&limit=${limit}`,
             method: 'GET'
         })
     }

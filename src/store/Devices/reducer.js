@@ -8,7 +8,7 @@ const initState = {
 export default function reduce(state = initState, action) {
     switch (action.type) {
         case FETCHED_DEVICE:
-            return {...state, devices: action.response};
+            return {...state, devices: action.payload};
         case ADD_DEVICE:
             console.log("Reduce add device");
             return state;

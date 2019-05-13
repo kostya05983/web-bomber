@@ -14,7 +14,7 @@ class ScriptsBomberService {
      */
     async getScripts(offset, limit) {
         return await request({
-            url: API_BASE_URL + `/jsonScriptAll?offset=${offset}&limit=${limit}`
+            url: API_BASE_URL + `/jsonScriptAll?offset=${offset}&limit=${limit}`,
             method: 'GET'
         })
     }
