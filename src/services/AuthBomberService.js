@@ -19,6 +19,7 @@ class AuthBomberService {
     }
 
     async login(loginRequest) {
+        console.log("Login", loginRequest);
         return await request({
             url: API_BASE_URL + "/auth/login",
             method: 'POST',
@@ -27,6 +28,7 @@ class AuthBomberService {
     }
 
     async signup(signupRequest) {
+        console.log("Signup", signupRequest);
         return await request({
             url: API_BASE_URL + "/auth/signup",
             method: 'POST',

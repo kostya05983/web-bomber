@@ -13,7 +13,7 @@ import EmptyPage from '../pages/NotFound';
 import Login from '../components/Login/Login.js'
 import Signup from "../components/SignUp/SignUp";
 import OAuth2RedirectHandler from "../components/oauth2/OAuth2RedirectHandler";
-import Devices from "../pages/Devices";
+import Devices from "../pages/DevicesContainer";
 import Scripts from "../pages/Scripts";
 import Schemes from "../pages/Schemes";
 

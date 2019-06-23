@@ -8,6 +8,7 @@ import SU_signUpState from '../SignUpForm/reducer'
 import DE_devicesState from '../Devices/reducer'
 import SC_schemesState from '../Schemes/reducer'
 import SC_scriptsState from '../Scripts/reducer'
+import DM_devicesModalState from '../devicesModal/reducer'
 
 export default combineReducers({
     NS_navigationState,
@@ -16,5 +17,6 @@ export default combineReducers({
     SU_signUpState,
     DE_devicesState,
     SC_schemesState,
-    SC_scriptsState
+    SC_scriptsState,
+    DM_devicesModalState
 })

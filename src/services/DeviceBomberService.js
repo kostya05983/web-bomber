@@ -7,7 +7,7 @@ class DeviceService {
      * GET getDevices with offset and imit
      * @param offset - how many devices we will skip
      * @param limit - how many devices we ca get
-     * @returns {Promise<any>}
+     * @returns {Promise<T>}
      */
     async getDevices(offset, limit) {
         return await request({
@@ -19,7 +19,7 @@ class DeviceService {
     /**
      * Create device on server
      * @param device - transfer device from gui
-     * @returns {Promise<any>}
+     * @returns {Promise<T>}
      */
     async createDevice(device) {
         return await request({
