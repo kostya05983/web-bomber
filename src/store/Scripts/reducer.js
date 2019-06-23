@@ -14,7 +14,7 @@ export default function reduce(state = initState, action) {
             console.log("Reduce add Script", action.payload);
             return state;
         case UPDATE_SCRIPT:
-            console.log("Reduce upodtae Script", action.payload);
+            console.log("Reduce update Script", action.payload);
             return state;
         case REMOVE_SCRIPT:
             console.log("Remove script", action.payload);

@@ -6,6 +6,7 @@ const initState = {
     schemes: []
 };
 
+
 export default function reducer(state = initState, action) {
     switch (action.type) {
         case TOGGLE_MODAL:
