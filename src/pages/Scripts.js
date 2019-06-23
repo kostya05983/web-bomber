@@ -7,8 +7,9 @@ import NavigationBar from "../components/NavigationBar";
 import ElementsBar from "../components/ElementsBar/ElementsBar";
 import FloatingButton from "../components/FloatingButton/FloatingButton";
 import GridWrapper from "../components/Grid/GridWrapper";
+import ScriptCreateModal from "../components/ScriptCreateModal/ScriptCreateModal";
 
-const scriptImage = "https://codepunk.io/content/images/2018/06/codepunk-logo-2018-square-black.png";
+const scriptImage = "http://icons.iconarchive.com/icons/icons8/ios7/128/Editing-Drafting-Compass-icon.png";
 const items = [
     { id: 1, link: "/scripts", name: "Script",img: scriptImage},
     { id: 2, link: "/scripts",name: "Script",img: scriptImage},
@@ -21,14 +22,24 @@ const items = [
 ];
 
 class Scripts extends Component{
+    constructor(...args) {
+        super(...args);
+        this.state = { modalShow: false };
+    }
 
     render() {
+        let modalClose = () => this.setState({ modalShow: false });
+
         return (
             <div className="scripts-page">
                 <NavigationBar title='Bomber'/>
+                <ScriptCreateModal
+                    show={this.state.modalShow}
+                    onHide={modalClose}
+                />
                 <Container>
                     <ElementsBar/>
-                    <FloatingButton link="/scripts"/>
+                    <FloatingButton link="/scripts" onClick={() => this.setState({ modalShow: true })}/>
                     <GridWrapper items={items}/>
                 </Container>
             </div>
