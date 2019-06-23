@@ -20,18 +20,16 @@ class Schemes extends Component {
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-
         return (
             <div className="scheme-page">
                 <NavigationBar title='Bomber'/>
                 <SchemeCreateModal
-                    show={this.state.modalShow}
-                    onHide={modalClose}
+                    show={this.props.schemesStore.isOpen}
+                    onHide={() => this.props.schemesFunctions.toggleCreateModal()}
                 />
                 <Container>
                     <ElementsBar/>
-                    <FloatingButton link="/schemes" onClick={() => this.setState({ modalShow: true })}/>
+                    <FloatingButton link="/schemes" onClick={() => this.props.schemesFunctions.toggleCreateModal()}/>
                     <GridWrapper img={schemeImage} items={this.props.schemesStore.schemes}/>
                 </Container>
             </div>

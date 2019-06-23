@@ -1,12 +1,16 @@
 import {ADD_SCRIPT, FETCHED_SCRIPTS, REMOVE_SCRIPT, UPDATE_SCRIPT} from "./constants";
+import {TOGGLE_MODAL} from "../Scripts/constants";
 
 
 const initState = {
+    isOpen: false,
     scripts: []
 };
 
 export default function reduce(state = initState, action) {
     switch (action.type) {
+        case TOGGLE_MODAL:
+            return {...state, isOpen: !state.isOpen};
         case FETCHED_SCRIPTS:
             console.log("Reduce fetched Script");
             return {...state, scripts: action.payload};

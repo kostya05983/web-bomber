@@ -12,6 +12,10 @@
     box-shadow: 2px 2px 3px #999;
 }
 
+:local(.float:hover){
+    cursor: pointer;
+}
+
 :local(.my_float){
     margin-top:22px;
 }

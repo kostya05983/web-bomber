@@ -22,18 +22,16 @@ class Scripts extends Component {
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-
         return (
             <div className="scripts-page">
                 <NavigationBar title='Bomber'/>
                 <ScriptCreateModal
-                    show={this.state.modalShow}
-                    onHide={modalClose}
+                    show={this.props.scriptsStore.isOpen}
+                    onHide={() => this.props.scriptsFunctions.toggleCreateModal()}
                 />
                 <Container>
                     <ElementsBar/>
-                    <FloatingButton link="/scripts" onClick={() => this.setState({ modalShow: true })}/>
+                    <FloatingButton link="/scripts" onClick={() => this.props.scriptsFunctions.toggleCreateModal()}/>
                     <GridWrapper img={scriptImage} items={this.props.scriptsStore.scripts}/>
                 </Container>
             </div>
