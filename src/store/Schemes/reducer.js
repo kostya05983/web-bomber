@@ -6,7 +6,7 @@ const initState = {
 };
 
 
-export default function reducer(state = initStatem, action) {
+export default function reducer(state = initState, action) {
     const {type, payload} = action;
 
     switch (type) {
