@@ -6,9 +6,10 @@ import GridItem from "./GridItem";
 import styles from './wrapper.css';
 
 function GridWrapper(props) {
+    console.log("GridWrapper props", props.items);
     return (
         <CardDeck className={styles.wrapper}>
-            {props.items.map(i => <GridItem key={i.id} link={i.link} name={i.name} img={i.img}/>)}
+            {props.items.map(i => <GridItem key={i.id} link={i.link} name={i.name} img={props.img}/>)}
         </CardDeck>
     );
 }
