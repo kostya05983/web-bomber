@@ -41,3 +41,5 @@ class RestSchemaService {
         })
     }
 }
+
+export default new RestSchemaService()
