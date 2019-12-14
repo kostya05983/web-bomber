@@ -1,56 +1,44 @@
 import {API_BASE_URL} from "./constants";
 import request from "./Request";
 
+const DEVICE_SCHEMA_URL = API_BASE_URL + "devices";
+
 class DeviceService {
 
-    /**
-     * GET getDevices with offset and imit
-     * @param offset - how many devices we will skip
-     * @param limit - how many devices we ca get
-     * @returns {Promise<T>}
-     */
-    async getDevices(offset, limit) {
+    async createDevice(createDeviceRequest) {
         return await request({
-            url: API_BASE_URL+`/devicesAll?offset=${offset}&limit=${limit}`,
+            url: DEVICE_SCHEMA_URL,
+            method: 'POST',
+            body: createDeviceRequest
+        })
+    }
+
+    async updateDevice(id, updateDeviceRequest) {
+        return await request({
+            url: DEVICE_SCHEMA_URL + '/' + id,
+            method: 'PATCH',
+            body: updateDeviceRequest
+        })
+    }
+
+    async getDevice(id) {
+        return await request({
+            url: DEVICE_SCHEMA_URL + "/" + id,
             method: 'GET'
         })
     }
 
-    /**
-     * Create device on server
-     * @param device - transfer device from gui
-     * @returns {Promise<T>}
-     */
-    async createDevice(device) {
+    async getDevices(offset, limit) {
         return await request({
-            url: API_BASE_URL+'/devices',
-            method: 'POST',
-            body: device
+            url: DEVICE_SCHEMA_URL + "?limit=" + limit + "&offset=" + offset,
+            method: 'GET'
         })
     }
 
-    /**
-     * Update device on server, update will be determined by key in device
-     * @param device -
-     * @returns {Promise<any>}
-     */
-    async updateDevice(device) {
+    async deleteDevice(id) {
         return await request({
-            url: API_BASE_URL+'/devices/',
-            method: 'PUT',
-            body: device
-        })
-    }
-
-    /**
-     * Remove device from service by id
-     * @param id - id of script to remove
-     * @returns {Promise<any>}
-     */
-    async removeDevice(id) {
-        return await request({
-            url: API_BASE_URL+`/devices?id=${id}`,
-            method: 'DELETE',
+            url: DEVICE_SCHEMA_URL + "/" + id,
+            method: 'DELETE'
         })
     }
 }
