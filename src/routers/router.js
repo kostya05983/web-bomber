@@ -8,14 +8,14 @@ import {
 } from "react-router-dom";
 import PrivateRoute from './PrivateRouter'
 
-import Navigation from '../pages/Navigation';
-import EmptyPage from '../pages/NotFound';
-import Login from '../components/Login/Login.js'
-import Signup from "../components/SignUp/SignUp";
-import OAuth2RedirectHandler from "../components/oauth2/OAuth2RedirectHandler";
-import Devices from "../pages/DevicesContainer";
-import Scripts from "../pages/Scripts";
-import Schemes from "../pages/Schemes";
+import Navigation from '../pages/navigation';
+import EmptyPage from '../pages/not-found';
+import Login from '../components/login/index.js'
+import Signup from "../components/sign-up";
+import OAuth2RedirectHandler from "../components/oauth2";
+import Devices from "../containers/devices";
+import Scripts from "../pages/script";
+import Schemes from "../pages/schemes";
 
 export default function Routers() {
     return (

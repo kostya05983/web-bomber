@@ -10,7 +10,7 @@ import DeviceService from '../../services/DeviceBomberService'
 export function fetchedDevices(offset, limit) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch fetched Devices", offset, limit);
+            console.log("Dispatch fetched devices", offset, limit);
 
             const fetchedDevices = DeviceService.getDevices(offset, limit);
 
