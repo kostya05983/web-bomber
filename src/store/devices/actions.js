@@ -7,10 +7,10 @@ import DeviceService from '../../services/DeviceBomberService'
  * @param limit
  * @returns {Function}
  */
-export function fetchedDevices(offset, limit) {
+export function getDevices(offset, limit) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch fetched devices", offset, limit);
+            console.log("Dispatch get devices (offset=%s, limit=%s)", offset, limit);
 
             const fetchedDevices = DeviceService.getDevices(offset, limit);
 
@@ -18,9 +18,9 @@ export function fetchedDevices(offset, limit) {
 
             console.log("Dispatch response", response);
 
-            dispatch({type: types.FETCHED_DEVICE, payload: response})
+            dispatch({type: types.GET_DEVICES, payload: response})
         } catch (error) {
-            console.error(error)
+            console.error("Error while fetched devices %s", error)
         }
     }
 }
@@ -33,15 +33,15 @@ export function fetchedDevices(offset, limit) {
 export function createDevice(device) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch create device");
+            console.log("Dispatch create device(device=%s)", device);
 
             const createDevice = DeviceService.createDevice(device);
 
             let response = await createDevice;
 
             dispatch({type: types.ADD_DEVICE, payload: response});
-        } catch(error) {
-            console.error(error)
+        } catch (error) {
+            console.error("Error while create device", error)
         }
     }
 }
@@ -54,36 +54,36 @@ export function createDevice(device) {
 export function updateDevice(device) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch update device");
+            console.log("Dispatch update device (device=%s)", device);
 
             const updatedDevice = DeviceService.updateDevice(device);
 
             let response = await updatedDevice;
 
             dispatch({type: types.UPDATE_DEVICE, payload: response})
-        } catch(error) {
-            console.error(error)
+        } catch (error) {
+            console.error("Error while dispatch update device", error)
         }
     }
 }
 
 /**
- * Action for remove device
+ * Action for delete device
  * @param id - id of device to remove
  * @returns {Function}
  */
-export function removeDevice(id) {
+export function deleteDevice(id) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch remove device");
+            console.log("Dispatch delete device (id=%s)", id);
 
-            const removedDevice = DeviceService.removeDevice(id);
+            const removedDevice = DeviceService.deleteDevice(id);
 
             let response = await removedDevice;
 
-            dispatch({type: types.REMOVE_DEVICE, payload: response});
-        } catch(error) {
-            console.error(error)
+            dispatch({type: types.DELETE_DEVICE, payload: response});
+        } catch (error) {
+            console.error("Error while dispatch delete device", error)
         }
     }
 }

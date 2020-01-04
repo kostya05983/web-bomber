@@ -1,6 +1,6 @@
 const prefix = 'DEVICES_';
 
-export const FETCHED_DEVICE = prefix+"FETCHED";
-export const ADD_DEVICE = prefix+"ADD";
-export const UPDATE_DEVICE = prefix+"UPDATE";
-export const REMOVE_DEVICE = prefix+"REMOVE";
+export const GET_DEVICES = prefix + "GET";
+export const ADD_DEVICE = prefix + "ADD";
+export const UPDATE_DEVICE = prefix + "UPDATE";
+export const DELETE_DEVICE = prefix + "REMOVE";

@@ -10,7 +10,7 @@ import Devices from "../../components/devices";
 class DevicesContainer extends Component {
 
     componentDidMount() {
-        this.props.devicesFunctions.fetchedDevices(0, 100);
+        this.props.devicesFunctions.getDevices(0, 100);
     }
 
     handler(event) {

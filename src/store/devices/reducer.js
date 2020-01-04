@@ -1,4 +1,4 @@
-import {ADD_DEVICE, FETCHED_DEVICE, REMOVE_DEVICE, UPDATE_DEVICE} from "./constants";
+import {ADD_DEVICE, GET_DEVICES, DELETE_DEVICE, UPDATE_DEVICE} from "./constants";
 
 
 const initState = {
@@ -7,16 +7,16 @@ const initState = {
 
 export default function reduce(state = initState, action) {
     switch (action.type) {
-        case FETCHED_DEVICE:
+        case GET_DEVICES:
             return {...state, devices: action.payload};
         case ADD_DEVICE:
-            console.log("Reduce add device");
+            console.log("Reduce add device", action.payload);
             return state;
         case UPDATE_DEVICE:
-            console.log("Reduce update device");
+            console.log("Reduce update device", action.payload);
             return state;
-        case REMOVE_DEVICE:
-            console.log("REMOVE device");
+        case DELETE_DEVICE:
+            console.log("Reduce delete device", action.payload);
             return state;
         default:
             return state;
