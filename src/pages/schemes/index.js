@@ -16,7 +16,7 @@ import schemeImage from '../../assets/Editing-Drafting-Compass-icon.png'
 class Schemes extends Component {
 
     componentDidMount() {
-        this.props.schemesFunctions.fetchedSchemes(0, 100)
+        this.props.schemesFunctions.getSchemes(0, 100)
     }
 
     render() {

@@ -13,60 +13,60 @@ export function toggleCreateModal() {
  * Requests schemes from server
  * @returns {Function}
  */
-export function fetchedSchemes(offset, limit) {
+export function getSchemes(offset, limit) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch fetched shemes");
+            console.log("Dispatch get schemes with (offset=%s,limit=%s)", offset, limit);
 
-            const fetchedSchemes = SchemesService.getSchemes(offset, limit);
+            const getSchemes = SchemesService.getSchemes(offset, limit);
 
-            let response = await fetchedSchemes;
+            let response = await getSchemes;
 
-            dispatch({type: types.FETCHED_SCHEMES, payload: response});
+            dispatch({type: types.GET_SCHEMES, payload: response});
         } catch (error) {
-            console.error(error)
+            console.error("Error while dispatch get schemes", error)
         }
     }
 }
 
 /**
  * Action for create Scheme on server
- * @param scheme
+ * @param schema
  * @returns {Function}
  */
-export function createScheme(scheme) {
+export function createSchema(schema) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch createScheme");
+            console.log("Dispatch createSchema (schema=%s)", schema);
 
-            const createScheme = SchemesService.createScheme(scheme);
+            const createScheme = SchemesService.createSchema(schema);
 
             let response = await createScheme;
 
-            dispatch({type: types.ADD_SCHEME, payload: response})
+            dispatch({type: types.ADD_SCHEMA, payload: response})
         } catch (error) {
-            console.error(error)
+            console.error("Error while dispatch createSchema %s", error)
         }
     }
 }
 
 /**
  * Action for update scheme
- * @param scheme
+ * @param schema
  * @returns {Function}
  */
-export function updateScheme(scheme) {
+export function updateSchema(schema) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch updateScheme");
+            console.log("Dispatch updateSchema (schema=%s)", schema);
 
-            const updatedScheme = SchemesService.updateScheme(scheme);
+            const updatedSchema = SchemesService.updateSchema(schema);
 
-            let response = await updatedScheme;
+            let response = await updatedSchema;
 
-            dispatch({type: types.UPDATE_SCHEME, payload: response});
+            dispatch({type: types.UPDATE_SCHEMA, payload: response});
         } catch (error) {
-            console.error(error)
+            console.error("Error while dispatch update schema %s", error)
         }
     }
 }
@@ -76,18 +76,18 @@ export function updateScheme(scheme) {
  * @param id - id of scheme to remove
  * @returns {Function}
  */
-export function removeScheme(id) {
+export function deleteSchema(id) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch removeScheme");
+            console.log("Dispatch deleteSchema (id=%s)", id);
 
-            const removedScheme = SchemesService.removeScheme(id);
+            const removedScheme = SchemesService.deleteScheme(id);
 
             let response = await removedScheme;
 
-            dispatch({type: types.REMOVE_SCHEME, payload: response});
+            dispatch({type: types.REMOVE_SCHEMA, payload: response});
         } catch (error) {
-            console.error(error)
+            console.error("Error while dispatch delete schema %s", error)
         }
     }
 }
