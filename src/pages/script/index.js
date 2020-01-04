@@ -3,7 +3,7 @@ import {
     Container,
 } from 'react-bootstrap';
 import {connect} from 'react-redux';
-import * as ScriptsFunctions from '../../store/Scripts/actions'
+import * as ScriptsFunctions from '../../store/scripts/actions'
 
 import NavigationBar from "../../components/navigation-bar";
 import ElementsBar from "../../components/elements-bar";

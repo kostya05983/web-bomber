@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import DevicesModal from "../../components/devices-modal";
-import * as DevicesModalActions from '../../store/devicesModal/actions'
+import * as DevicesModalActions from '../../store/devices-modal/actions'
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 

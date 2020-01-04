@@ -3,7 +3,7 @@ import {
     CardDeck, Container, Row
 } from 'react-bootstrap';
 
-import * as NavFunctions from '../../store/NavigationPart/actions';
+import * as NavFunctions from '../../store/navigation-part/actions';
 
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';

@@ -1,6 +1,6 @@
 import {TOGGLE_MODAL} from "./constants";
 import * as types from './constants'
-import SchemesService from '../../services/SchemeBomberService'
+import SchemesService from '../../services/rest/RestSchemaService'
 
 export function toggleCreateModal() {
     return {

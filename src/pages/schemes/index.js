@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap';
 
 import {connect} from 'react-redux';
-import * as SchemesFunctions from '../../store/Schemes/actions'
+import * as SchemesFunctions from '../../store/schemes/actions'
 import NavigationBar from "../../components/navigation-bar";
 import ElementsBar from "../../components/elements-bar";
 import FloatingButton from "../../components/floating-button";

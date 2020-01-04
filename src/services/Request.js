@@ -1,9 +1,6 @@
 import {ACCESS_TOKEN} from "./constants";
 
 const request = (options) => {
-    // if (!localStorage.getItem(ACCESS_TOKEN)) {
-    //     return Promise.reject("No access token set.");
-    // }
     const headers = new Headers({
         'Content-Type': 'application/json',
     });

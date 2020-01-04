@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import React from 'react';
 import * as AuthFunctions from "../../store/Auth/actions";
-import * as LoginFunctions from '../../store/LoginForm/actions'
+import * as LoginFunctions from '../../store/login-form/actions'
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 

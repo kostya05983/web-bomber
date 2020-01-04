@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import * as NavFunctions from '../../store/NavigationPart/actions';
-import * as DevicesFunctions from '../../store/Devices/actions';
-import * as DevicesModalFunctions from '../../store/devicesModal/actions'
+import * as NavFunctions from '../../store/navigation-part/actions';
+import * as DevicesFunctions from '../../store/devices/actions';
+import * as DevicesModalFunctions from '../../store/devices-modal/actions'
 
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';

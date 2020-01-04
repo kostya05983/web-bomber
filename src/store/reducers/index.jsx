@@ -1,14 +1,14 @@
 import {combineReducers} from 'redux';
 
 // Navigation part
-import NS_navigationState from '../NavigationPart/reducer';
+import NS_navigationState from '../navigation-part/reducer';
 import AU_authState from '../Auth/reducer'
-import LF_loginState from '../LoginForm/reducer'
-import SU_signUpState from '../SignUpForm/reducer'
-import DE_devicesState from '../Devices/reducer'
-import SC_schemesState from '../Schemes/reducer'
-import SC_scriptsState from '../Scripts/reducer'
-import DM_devicesModalState from '../devicesModal/reducer'
+import LF_loginState from '../login-form/reducer'
+import SU_signUpState from '../sign-up-form/reducer'
+import DE_devicesState from '../devices/reducer'
+import SC_schemesState from '../schemes/reducer'
+import SC_scriptsState from '../scripts/reducer'
+import DM_devicesModalState from '../devices-modal/reducer'
 
 export default combineReducers({
     NS_navigationState,

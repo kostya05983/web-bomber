@@ -1,5 +1,5 @@
 import {ADD_SCRIPT, FETCHED_SCRIPTS, REMOVE_SCRIPT, UPDATE_SCRIPT} from "./constants";
-import {TOGGLE_MODAL} from "../Scripts/constants";
+import {TOGGLE_MODAL} from ".//constants";
 
 
 const initState = {
