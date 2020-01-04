@@ -1,5 +1,5 @@
 import * as types from './constants'
-import ScriptService from '../../services/ScriptsBomberService'
+import ScriptService from '../../services/rest/RestScriptService'
 import {TOGGLE_MODAL} from "./constants";
 
 export function toggleCreateModal() {
@@ -15,18 +15,18 @@ export function toggleCreateModal() {
  * @param limit
  * @returns {Function}
  */
-export function fetchedScripts(offset, limit) {
+export function getScripts(offset, limit) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch getScripts");
+            console.log("Dispatch getScripts (offset=%s, limit=%s)", offset, limit);
 
             const fetchedScripts = ScriptService.getScripts(offset, limit);
 
             let response = await fetchedScripts;
 
-            dispatch({type: types.FETCHED_SCRIPTS, payload: response});
+            dispatch({type: types.GET_SCRIPTS, payload: response});
         } catch (error) {
-            console.error(error)
+            console.error("Error while dispatch getScripts %s", error)
         }
     }
 }
@@ -39,7 +39,7 @@ export function fetchedScripts(offset, limit) {
 export function createScript(script) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch createScript");
+            console.log("Dispatch createScript (script=%script)", script);
 
             const createdScript = ScriptService.createScript(script);
 
@@ -47,7 +47,7 @@ export function createScript(script) {
 
             dispatch({type: types.ADD_SCRIPT, payload: response});
         } catch (error) {
-            console.error(error)
+            console.error("Error while createScript", error)
         }
     }
 }
@@ -60,7 +60,7 @@ export function createScript(script) {
 export function updateScript(script) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch updateScript");
+            console.log("Dispatch updateScript (script=%s)", script);
 
             const updatedScript = ScriptService.updateScript(script);
 
@@ -68,28 +68,28 @@ export function updateScript(script) {
 
             dispatch({type: types.UPDATE_SCRIPT, payload: response});
         } catch (error) {
-            console.error(error)
+            console.error("Error while update script", error)
         }
     }
 }
 
 /**
- * Action for remove script
+ * Action for delete script
  * @param id - id of script to remove
  * @returns {Function}
  */
-export function removeScript(id) {
+export function deleteScript(id) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch removeScript");
+            console.log("Dispatch deleteScript (id=%s)", id);
 
-            const removeScript = ScriptService.removeScript(id);
+            const removeScript = ScriptService.deleteScript(id);
 
             let response = await removeScript;
 
-            dispatch({type: types.REMOVE_SCRIPT, payload: response})
+            dispatch({type: types.DELETE_SCRIPT, payload: response})
         } catch (error) {
-            console.error(error)
+            console.error("Error while delete script", error)
         }
     }
 }

@@ -18,7 +18,7 @@ import scriptImage from '../../assets/codepunk-logo-2018-square-black.png'
 class Scripts extends Component {
 
     componentDidMount() {
-        this.props.scriptsFunctions.fetchedScripts(0, 100)
+        this.props.scriptsFunctions.getScripts(0, 100)
     }
 
     render() {

@@ -1,5 +1,5 @@
-import {ADD_SCRIPT, FETCHED_SCRIPTS, REMOVE_SCRIPT, UPDATE_SCRIPT} from "./constants";
-import {TOGGLE_MODAL} from ".//constants";
+import {ADD_SCRIPT, GET_SCRIPTS, DELETE_SCRIPT, UPDATE_SCRIPT} from "./constants";
+import {TOGGLE_MODAL} from "./constants";
 
 
 const initState = {
@@ -11,8 +11,8 @@ export default function reduce(state = initState, action) {
     switch (action.type) {
         case TOGGLE_MODAL:
             return {...state, isOpen: !state.isOpen};
-        case FETCHED_SCRIPTS:
-            console.log("Reduce fetched Script");
+        case GET_SCRIPTS:
+            console.log("Reduce get Scripts", action.payload);
             return {...state, scripts: action.payload};
         case ADD_SCRIPT:
             console.log("Reduce add Script", action.payload);
@@ -20,8 +20,8 @@ export default function reduce(state = initState, action) {
         case UPDATE_SCRIPT:
             console.log("Reduce update Script", action.payload);
             return state;
-        case REMOVE_SCRIPT:
-            console.log("Remove script", action.payload);
+        case DELETE_SCRIPT:
+            console.log("Delete script", action.payload);
             return state;
         default:
             return state;
