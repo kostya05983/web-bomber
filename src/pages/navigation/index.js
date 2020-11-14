@@ -26,13 +26,16 @@ class Navigation extends Component {
                     <ElementsBar/>
                     <Row className="justify-content-md-center sections">
                         <CardDeck className="section-holder">
-                            <OptionCard link="/devices" title='Devices' text="Nearest available devices" img={this.sample_img}/>
-                            <OptionCard link="/scripts" title='Scripts' text="Creating and editing test scripts" img={this.sample_img}/>
-                            <OptionCard link="/schemes" title='Schemes' text="Schemas for the selected protocol" img={this.sample_img}/>
+                            <OptionCard link="/scripts" title='Scripts' text="Creating and editing test scripts"
+                                        img={this.sample_img}/>
+                            <OptionCard link="/schemes" title='Schemes' text="Schemas for the selected protocol"
+                                        img={this.sample_img}/>
+                            <OptionCard link="/forms" title='Forms' text="Form to run pipelines" img={this.sample_img}/>
                         </CardDeck>
                     </Row>
                     <Row className="justify-content-md-center subsections">
-                        <SubsectionCard title='Statistics' text="Test statistics. Display graphs, dynamics of device testing processes."/>
+                        <SubsectionCard title='Statistics'
+                                        text="Test statistics. Display graphs, dynamics of device testing processes."/>
 
                     </Row>
                 </Container>
