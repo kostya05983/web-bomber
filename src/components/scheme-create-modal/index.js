@@ -1,12 +1,15 @@
 import React from 'react';
 import {Modal, Button, Form} from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import InputGroup from "react-bootstrap/InputGroup";
 
 const methods = [
-    { name: 'GET'},
-    { name: 'POST'},
-    { name: 'PUT'},
-    { name: 'PATCH'},
-    { name: 'DELETE'}
+    {name: 'GET'},
+    {name: 'POST'},
+    {name: 'PUT'},
+    {name: 'PATCH'},
+    {name: 'DELETE'}
 ];
 
 class SchemeCreateModal extends React.Component {
@@ -25,9 +28,33 @@ class SchemeCreateModal extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
+                        <Form.Group>
+                            <Form.Label>Headers</Form.Label>
+                            <InputGroup>
+                                <Form.Control placeholder="key"/>
+                                <Form.Control placeholder="value"/>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Path variables</Form.Label>
+                            <InputGroup>
+                                <Form.Control placeholder="key"/>
+                                <Form.Control placeholder="value"/>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group>
+
+                        </Form.Group>
+
                         <Form.Group controlId="exampleForm.ControlInput">
                             <Form.Label>Scheme name</Form.Label>
-                            <Form.Control placeholder="Scheme" />
+
+                            <Form.Control placeholder="Scheme"/>
+                            <Form.Control placeholder="Scheme1"/>
+                        </Form.Group>
+                        <Form.Group controlId="SchemaHeaders">
+                            <Form.Label>Headers</Form.Label>
+
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlSelect">
                             <Form.Label>Method</Form.Label>
@@ -37,7 +64,7 @@ class SchemeCreateModal extends React.Component {
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlTextarea">
                             <Form.Label>Content</Form.Label>
-                            <Form.Control as="textarea" rows="3" />
+                            <Form.Control as="textarea" rows="3"/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -49,4 +76,5 @@ class SchemeCreateModal extends React.Component {
         );
     }
 }
+
 export default SchemeCreateModal
