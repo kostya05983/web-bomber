@@ -19,7 +19,7 @@ class SchemeCreateModal extends React.Component {
         super(props);
         this.state = {
             headers: {
-                1: {
+                0: {
                     key: "",
                     value: ""
                 }
@@ -27,6 +27,7 @@ class SchemeCreateModal extends React.Component {
         };
         this.createHeaders = this.createHeaders.bind(this);
         this.updateHeader = this.updateHeader.bind(this);
+        this.addHeader = this.addHeader.bind(this);
     }
 
     createHeaders() {
@@ -56,6 +57,20 @@ class SchemeCreateModal extends React.Component {
 
     }
 
+    addHeader() {
+        const size = Object.keys(this.state.headers).length;
+        const headers = this.state.headers;
+        headers[size] = {
+            key: "",
+            value: ""
+        };
+        this.setState({
+            headers: {
+                ...headers
+            }
+        })
+    }
+
 
     render() {
         return (
@@ -75,6 +90,9 @@ class SchemeCreateModal extends React.Component {
                         <Form.Group>
                             <Form.Label>Headers</Form.Label>
                             {this.createHeaders()}
+                            <div className="text-center">
+                                <Button variant="info" onClick={this.addHeader}>Add</Button>
+                            </div>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Path variables</Form.Label>
