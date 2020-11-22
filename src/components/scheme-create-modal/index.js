@@ -3,6 +3,7 @@ import {Modal, Button, Form} from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
+import InputHeaderComponent from "../header-input";
 
 const methods = [
     {name: 'GET'},
@@ -13,6 +14,49 @@ const methods = [
 ];
 
 class SchemeCreateModal extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            headers: {
+                1: {
+                    key: "",
+                    value: ""
+                }
+            }
+        };
+        this.createHeaders = this.createHeaders.bind(this);
+        this.updateHeader = this.updateHeader.bind(this);
+    }
+
+    createHeaders() {
+        return Object.entries(this.state.headers).map(([key, value]) => {
+            return (
+                <InputHeaderComponent props={
+                    {
+                        key: value.key,
+                        value: value.value
+                    }
+                } handleChange={this.updateHeader}/>
+            );
+        })
+    }
+
+    updateHeader(index, key, value) {
+        const headers = this.state.headers;
+        headers[index] = {
+            key: key,
+            value: value
+        };
+        this.setState({
+            headers: {
+                ...headers
+            }
+        })
+
+    }
+
+
     render() {
         return (
             <Modal
@@ -30,10 +74,7 @@ class SchemeCreateModal extends React.Component {
                     <Form>
                         <Form.Group>
                             <Form.Label>Headers</Form.Label>
-                            <InputGroup>
-                                <Form.Control placeholder="key"/>
-                                <Form.Control placeholder="value"/>
-                            </InputGroup>
+                            {this.createHeaders()}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Path variables</Form.Label>
