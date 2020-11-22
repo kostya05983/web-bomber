@@ -2,7 +2,7 @@ import React from 'react'
 import FormControl from "react-bootstrap/es/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 
-export default class InputHeaderComponent extends React.Component {
+export default class InputKeyValueComponent extends React.Component {
 
     constructor(props) {
         super(props);

@@ -15,8 +15,17 @@ import schemeImage from '../../assets/Editing-Drafting-Compass-icon.png'
 
 class Schemes extends Component {
 
+    constructor(props) {
+        super(props);
+        this.createSchema = this.createSchema.bind(this);
+    }
+
     componentDidMount() {
         this.props.schemesFunctions.getSchemes(0, 100)
+    }
+
+    createSchema(schema) {
+        this.props.schemesFunctions.createSchema(schema);
     }
 
     render() {
@@ -25,7 +34,13 @@ class Schemes extends Component {
                 <NavigationBar title='Bomber'/>
                 <SchemeCreateModal
                     show={this.props.schemesStore.isOpen}
-                    onHide={() => this.props.schemesFunctions.toggleCreateModal()}
+                    addFunc={(schema) => {
+                        this.props.schemesFunctions.toggleCreateModal();
+                        this.createSchema(schema);
+                    }}
+                    onHide={() => {
+                        this.props.schemesFunctions.toggleCreateModal();
+                    }}
                 />
                 <Container>
                     <ElementsBar/>
