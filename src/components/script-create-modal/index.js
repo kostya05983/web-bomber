@@ -1,32 +1,61 @@
 import React from 'react';
 import {Modal, Button, Form} from "react-bootstrap";
 
-const types = [
-    { name: 'JSON'}
-];
-
-const protocols = [
-    { name: 'HTTP'}
-];
-
-// TODO: Get schemes from server
-const schemes = [
-    { name: 'Sample scheme'}
-];
-
-// TODO: Get devices list from server
-const devices = [
-    { id: 1, title: "127.0.0.1", subtitle: "asdasd", time:"4:20" },
-    { id: 2, title: "127.0.0.1", subtitle: "dsasd", time:"4:20" },
-    { id: 3, title: "127.0.0.1", subtitle: "sdasd", time:"4:20" },
-    { id: 4, title: "127.0.0.1", subtitle: "daaas", time:"4:20" },
-    { id: 5, title: "127.0.0.1", subtitle: "asdasd", time:"4:20" },
-    { id: 6, title: "127.0.0.1", subtitle: "dsasd", time:"4:20" },
-    { id: 7, title: "127.0.0.1", subtitle: "sdasd", time:"4:20" },
-    { id: 8, title: "127.0.0.1", subtitle: "daaas", time:"4:20" }
+const methods = [
+    {name: 'GET'},
+    {name: 'POST'},
+    {name: 'PUT'},
+    {name: 'PATCH'},
+    {name: 'DELETE'}
 ];
 
 class ScriptCreateModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            address: "",
+            requestMethod: "",
+            rps: "",
+            time: ""
+        };
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleAddressChange = this.handleAddressChange.bind(this);
+        this.handleRequestMethodChange = this.handleRequestMethodChange.bind(this);
+        this.handleRpsChange = this.handleRpsChange.bind(this);
+        this.handleTimeChange = this.handleTimeChange.bind(this);
+    }
+
+    handleNameChange(e) {
+        this.setState({
+            name: e.target.value
+        })
+    }
+
+    handleAddressChange(e) {
+        this.setState({
+            address: e.target.value
+        })
+    }
+
+    handleRequestMethodChange(e) {
+        this.setState({
+            requestMethod: e.target.value
+        })
+    }
+
+    handleRpsChange(e) {
+        this.setState({
+            rps: e.target.value
+        })
+    }
+
+    handleTimeChange(e) {
+        this.setState({
+            time: e.target.value
+        })
+    }
+
     render() {
         return (
             <Modal
@@ -44,31 +73,25 @@ class ScriptCreateModal extends React.Component {
                     <Form>
                         <Form.Group controlId="exampleForm.ControlInput">
                             <Form.Label>Script name</Form.Label>
-                            <Form.Control placeholder="Script" />
+                            <Form.Control placeholder="Script" onChange={this.handleNameChange}/>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Content-type</Form.Label>
-                            <Form.Control as="select">
-                                {types.map(t => <option>{t.name}</option>)}
-                            </Form.Control>
+                            <Form.Label>Address</Form.Label>
+                            <Form.Control placeholder="address" onChange={this.handleAddressChange}/>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlSelect2">
-                            <Form.Label>Device</Form.Label>
-                            <Form.Control as="select">
-                                {devices.map(d => <option>{d.subtitle}</option>)}
+                            <Form.Label>RequestMethod</Form.Label>
+                            <Form.Control as="select" onSelect={this.handleRequestMethodChange}>
+                                {methods.map(t => <option>{t.name}</option>)}
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlSelect3">
-                            <Form.Label>Protocol</Form.Label>
-                            <Form.Control as="select">
-                                {protocols.map(p => <option>{p.name}</option>)}
-                            </Form.Control>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Rps</Form.Label>
+                            <Form.Control placeholder="rps" onChange={this.handleRpsChange}/>
                         </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlSelect4">
-                            <Form.Label>Scheme</Form.Label>
-                            <Form.Control as="select">
-                                {schemes.map(s => <option>{s.name}</option>)}
-                            </Form.Control>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Time</Form.Label>
+                            <Form.Control placeholder="time" onChange={this.handleTimeChange}/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -80,4 +103,5 @@ class ScriptCreateModal extends React.Component {
         );
     }
 }
+
 export default ScriptCreateModal
