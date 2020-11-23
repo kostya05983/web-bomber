@@ -1,5 +1,5 @@
 import React from 'react'
-import FormControl from "react-bootstrap/es/FormControl";
+import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 
 export default class InputKeyValueComponent extends React.Component {

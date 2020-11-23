@@ -35,7 +35,8 @@ class SchemeCreateModal extends React.Component {
                     key: "",
                     value: ""
                 }
-            }
+            },
+            body: ""
         };
         this.createKeyValueElements = this.createKeyValueElements.bind(this);
         this.updateHeader = this.updateHeader.bind(this);
@@ -44,6 +45,7 @@ class SchemeCreateModal extends React.Component {
         this.addHeader = this.addHeader.bind(this);
         this.addPathVariable = this.addPathVariable.bind(this);
         this.addRequestParam = this.addRequestParam.bind(this);
+        this.handleBodyChange = this.handleBodyChange.bind(this);
     }
 
     createKeyValueElements(storedElement, func) {
@@ -141,6 +143,14 @@ class SchemeCreateModal extends React.Component {
         })
     }
 
+    handleBodyChange(e) {
+        const body = e.target.value;
+        console.log("body", body);
+        this.setState({
+            body: body
+        })
+    }
+
 
     render() {
         return (
@@ -195,12 +205,23 @@ class SchemeCreateModal extends React.Component {
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlTextarea">
                             <Form.Label>Content</Form.Label>
-                            <Form.Control as="textarea" rows="3"/>
+                            <Form.Control as="textarea" rows="3" value={this.state.body}
+                                          onChange={this.handleBodyChange}/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" >Create</Button>
+                    <Button variant="success" onClick={() => {
+                        this.props.addFunc(
+                            {
+                                headers: {},
+                                pathVariables: {},
+                                requestParams: {},
+                                body: {}
+                            }
+                        );
+
+                    }}>Create</Button>
                     <Button variant="secondary" onClick={this.props.onHide}>Cancel</Button>
                 </Modal.Footer>
             </Modal>

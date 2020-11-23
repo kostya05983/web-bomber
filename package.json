@@ -5,9 +5,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "latest",
+    "prop-types": "latest",
     "react": "latest",
     "react-autobind": "^1.0.6",
-    "react-bootstrap": "latest",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "^16.8.4",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
@@ -16,8 +17,7 @@
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "prop-types": "latest"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
