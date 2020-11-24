@@ -18,15 +18,15 @@ export function toggleCreateModal() {
 export function getScripts(offset, limit) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch getScripts (offset=%s, limit=%s)", offset, limit);
+            console.log("Dispatch getAll (offset=%s, limit=%s)", offset, limit);
 
-            const fetchedScripts = ScriptService.getScripts(offset, limit);
+            const fetchedScripts = ScriptService.getAll(offset, limit);
 
             let response = await fetchedScripts;
 
             dispatch({type: types.GET_SCRIPTS, payload: response});
         } catch (error) {
-            console.error("Error while dispatch getScripts %s", error)
+            console.error("Error while dispatch getAll %s", error)
         }
     }
 }
@@ -39,15 +39,15 @@ export function getScripts(offset, limit) {
 export function createScript(script) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch createScript (script=%script)", script);
+            console.log("Dispatch create (script=%script)", script);
 
-            const createdScript = ScriptService.createScript(script);
+            const createdScript = ScriptService.create(script);
 
             let response = await createdScript;
 
             dispatch({type: types.ADD_SCRIPT, payload: response});
         } catch (error) {
-            console.error("Error while createScript", error)
+            console.error("Error while create", error)
         }
     }
 }
@@ -60,9 +60,9 @@ export function createScript(script) {
 export function updateScript(script) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch updateScript (script=%s)", script);
+            console.log("Dispatch update (script=%s)", script);
 
-            const updatedScript = ScriptService.updateScript(script);
+            const updatedScript = ScriptService.update(script);
 
             let response = await updatedScript;
 
@@ -81,9 +81,9 @@ export function updateScript(script) {
 export function deleteScript(id) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch deleteScript (id=%s)", id);
+            console.log("Dispatch delete (id=%s)", id);
 
-            const removeScript = ScriptService.deleteScript(id);
+            const removeScript = ScriptService.delete(id);
 
             let response = await removeScript;
 

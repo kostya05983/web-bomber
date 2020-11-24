@@ -1,10 +1,10 @@
 import {API_BASE_URL} from "../constants";
 import request from '../Request'
 
-const REST_SCRIPT_URL = API_BASE_URL + "/bomber/bomber-api/script/v1";
+const REST_SCRIPT_URL = API_BASE_URL + "/bomber/bomber-api/v1/scripts";
 
 class RestScriptService {
-    async createScript(createScriptRequest) {
+    async create(createScriptRequest) {
         return await request({
             url: REST_SCRIPT_URL,
             method: 'POST',
@@ -12,7 +12,7 @@ class RestScriptService {
         })
     }
 
-    async updateScript(id, updateScriptRequest) {
+    async update(id, updateScriptRequest) {
         return await request({
             url: REST_SCRIPT_URL + "/" + id,
             method: "PUT",
@@ -20,21 +20,21 @@ class RestScriptService {
         })
     }
 
-    async getScript(id) {
+    async get(id) {
         return await request({
             url: REST_SCRIPT_URL + "/" + id,
             method: "GET"
         })
     }
 
-    async getScripts(offset, limit) {
+    async getAll(offset, limit) {
         return await request({
-            url: REST_SCRIPT_URL + "?offset=" + offset + "&limit=" + limit,
+            url: REST_SCRIPT_URL + "?skip=" + offset + "&take=" + limit,
             method: "GET"
         })
     }
 
-    async deleteScript(id) {
+    async delete(id) {
         return await request({
             url: API_BASE_URL + "/" + id,
             method: "DELETE"

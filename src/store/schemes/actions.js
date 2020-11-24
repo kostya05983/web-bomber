@@ -18,7 +18,7 @@ export function getSchemes(offset, limit) {
         try {
             console.log("Dispatch get schemes with (offset=%s,limit=%s)", offset, limit);
 
-            const getSchemes = SchemesService.getSchemes(offset, limit);
+            const getSchemes = SchemesService.getAll(offset, limit);
 
             let response = await getSchemes;
 
@@ -37,15 +37,15 @@ export function getSchemes(offset, limit) {
 export function createSchema(schema) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch createSchema (schema=%s)", schema);
+            console.log("Dispatch create (schema=%s)", schema);
 
-            const createScheme = SchemesService.createSchema(schema);
+            const createScheme = SchemesService.create(schema);
 
             let response = await createScheme;
 
             dispatch({type: types.ADD_SCHEMA, payload: response})
         } catch (error) {
-            console.error("Error while dispatch createSchema %s", error)
+            console.error("Error while dispatch create %s", error)
         }
     }
 }
@@ -58,9 +58,9 @@ export function createSchema(schema) {
 export function updateSchema(schema) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch updateSchema (schema=%s)", schema);
+            console.log("Dispatch update (schema=%s)", schema);
 
-            const updatedSchema = SchemesService.updateSchema(schema);
+            const updatedSchema = SchemesService.update(schema);
 
             let response = await updatedSchema;
 
@@ -81,7 +81,7 @@ export function deleteSchema(id) {
         try {
             console.log("Dispatch deleteSchema (id=%s)", id);
 
-            const removedScheme = SchemesService.deleteScheme(id);
+            const removedScheme = SchemesService.delete(id);
 
             let response = await removedScheme;
 

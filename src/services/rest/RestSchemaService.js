@@ -1,10 +1,10 @@
 import {API_BASE_URL} from "../constants";
 import request from '../Request'
 
-const REST_SCHEMA_URL = API_BASE_URL + "/bomber/bomber-api/schema/v1";
+const REST_SCHEMA_URL = API_BASE_URL + "/bomber/bomber-api/v1/schemas";
 
 class RestSchemaService {
-    async createSchema(createSchemaRequest) {
+    async create(createSchemaRequest) {
         return await request({
             url: REST_SCHEMA_URL,
             method: 'POST',
@@ -12,7 +12,7 @@ class RestSchemaService {
         })
     }
 
-    async updateSchema(id, updateSchemaRequuest) {
+    async update(id, updateSchemaRequuest) {
         return await request({
             url: REST_SCHEMA_URL + "/" + id,
             method: "PATCH",
@@ -20,21 +20,21 @@ class RestSchemaService {
         })
     }
 
-    async getSchema(id) {
+    async get(id) {
         return await request({
             url: REST_SCHEMA_URL + "/" + id,
             method: "GET"
         })
     }
 
-    async getSchemes(offset, limit) {
+    async getAll(offset, limit) {
         return await request({
-            url: REST_SCHEMA_URL + "?offset=" + offset + "&limit=" + limit,
+            url: REST_SCHEMA_URL + "?skip=" + offset + "&take=" + limit,
             method: "GET"
         })
     }
 
-    async deleteScheme(id) {
+    async delete(id) {
         return await request({
             url: REST_SCHEMA_URL + "/" + id,
             method: "DELETE"
