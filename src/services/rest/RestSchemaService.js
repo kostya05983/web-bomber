@@ -5,10 +5,11 @@ const REST_SCHEMA_URL = API_BASE_URL + "/bomber/bomber-api/v1/schemas";
 
 class RestSchemaService {
     async create(createSchemaRequest) {
+        console.log("request", createSchemaRequest);
         return await request({
             url: REST_SCHEMA_URL,
             method: 'POST',
-            body: createSchemaRequest
+            body: JSON.stringify(createSchemaRequest)
         })
     }
 
@@ -16,7 +17,7 @@ class RestSchemaService {
         return await request({
             url: REST_SCHEMA_URL + "/" + id,
             method: "PATCH",
-            body: updateSchemaRequuest
+            body: JSON.stringify(updateSchemaRequuest)
         })
     }
 

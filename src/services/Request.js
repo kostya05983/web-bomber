@@ -6,6 +6,8 @@ const request = (options) => {
     });
     headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
 
+    console.log("options of request", options);
+
     if (localStorage.getItem(ACCESS_TOKEN)) {
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
     }

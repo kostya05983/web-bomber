@@ -17,6 +17,7 @@ class SchemeCreateModal extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log("call constructor of modal");
         this.state = {
             headers: {
                 0: {
@@ -48,17 +49,19 @@ class SchemeCreateModal extends React.Component {
         this.handleBodyChange = this.handleBodyChange.bind(this);
 
         this.unwrapDictionary = this.unwrapDictionary.bind(this);
+        this.setName = this.setName.bind(this);
     }
 
     createKeyValueElements(storedElement, func) {
-        return Object.entries(storedElement).map(([key, value]) => {
+        return Object.entries(storedElement).map(([index, value]) => {
+            console.log("entry", value.key)
             return (
-                <InputKeyValueComponent props={
-                    {
-                        key: value.key,
-                        value: value.value
-                    }
-                } handleChange={func}/>
+                <InputKeyValueComponent
+                    index={index}
+                    dictKey={value.key}
+                    value={value.value}
+                    handleChange={func}
+                />
             );
         })
     }
@@ -66,10 +69,12 @@ class SchemeCreateModal extends React.Component {
 
     updateHeader(index, key, value) {
         const headers = this.state.headers;
+        console.log("index of update", index);
         headers[index] = {
             key: key,
             value: value
         };
+        console.log("New headers", headers);
         this.setState({
             headers: {
                 ...headers
@@ -169,6 +174,31 @@ class SchemeCreateModal extends React.Component {
         return result;
     }
 
+    unwrapRequestParams(dict) {
+        let result = [];
+        Object.keys(dict).forEach(function (key) {
+            const entry = dict[key];
+            console.log("entry", entry);
+            let newKey = entry.key;
+            console.log("key", newKey);
+            let newRequestParam = {
+                name: newKey,
+                value: entry.value,
+                isGeneratorNeed: false
+            };
+            result.push(newRequestParam);
+        });
+        console.log("headers", result);
+        return result;
+    }
+
+    setName(e) {
+        const name = e.target.value;
+        this.setState({
+            name: name
+        })
+    }
+
     render() {
         return (
             <Modal
@@ -212,7 +242,7 @@ class SchemeCreateModal extends React.Component {
                         <Form.Group controlId="exampleForm.ControlInput">
                             <Form.Label>Scheme name</Form.Label>
 
-                            <Form.Control placeholder="name"/>
+                            <Form.Control placeholder="name" onChange={this.setName} value={this.state.name}/>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlSelect">
                             <Form.Label>Method</Form.Label>
@@ -231,9 +261,10 @@ class SchemeCreateModal extends React.Component {
                     <Button variant="success" onClick={() => {
                         this.props.addfunc(
                             {
+                                name: this.state.name,
                                 headers: this.unwrapDictionary(this.state.headers),
                                 pathVariables: this.unwrapDictionary(this.state.pathVariables),
-                                requestParams: this.unwrapDictionary(this.state.requestParams),
+                                requestParams: this.unwrapRequestParams(this.state.requestParams),
                                 body: this.state.body
                             }
                         );
