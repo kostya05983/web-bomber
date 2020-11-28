@@ -8,7 +8,7 @@ class RestScriptService {
         return await request({
             url: REST_SCRIPT_URL,
             method: 'POST',
-            body: createScriptRequest
+            body: JSON.stringify(createScriptRequest)
         })
     }
 
@@ -16,7 +16,7 @@ class RestScriptService {
         return await request({
             url: REST_SCRIPT_URL + "/" + id,
             method: "PUT",
-            body: updateScriptRequest
+            body: JSON.stringify(updateScriptRequest)
         })
     }
 

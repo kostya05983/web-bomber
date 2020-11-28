@@ -96,7 +96,19 @@ class ScriptCreateModal extends React.Component {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" onClick={this.props.onHide}>Create</Button>
+                    <Button variant="success" onClick={() => {
+                        this.props.addFunc(
+                            {
+                                name: this.state.name,
+                                address: this.state.address,
+                                requestMethod: this.state.requestMethod,
+                                configuration: {
+                                    rps: this.state.rps,
+                                    time: this.state.time
+                                }
+                            }
+                        )
+                    }}>Create</Button>
                     <Button variant="secondary" onClick={this.props.onHide}>Cancel</Button>
                 </Modal.Footer>
             </Modal>

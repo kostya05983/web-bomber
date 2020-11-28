@@ -24,7 +24,7 @@ export function getScripts(offset, limit) {
 
             let response = await fetchedScripts;
 
-            dispatch({type: types.GET_SCRIPTS, payload: response});
+            dispatch({type: types.GET_SCRIPTS, payload: response.items});
         } catch (error) {
             console.error("Error while dispatch getAll %s", error)
         }

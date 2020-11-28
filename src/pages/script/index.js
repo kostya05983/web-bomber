@@ -28,6 +28,10 @@ class Scripts extends Component {
                 <ScriptCreateModal
                     show={this.props.scriptsStore.isOpen}
                     onHide={() => this.props.scriptsFunctions.toggleCreateModal()}
+                    addFunc={(script) => {
+                        this.props.scriptsFunctions.createScript(script);
+                        this.props.scriptsFunctions.toggleCreateModal()
+                    }}
                 />
                 <Container>
                     <ElementsBar/>
