@@ -1,4 +1,4 @@
-import {ADD_FORM} from "./constants";
+import {ADD_FORM, GET_FORMS} from "./constants";
 import {TOGGLE_MODAL} from "./constants";
 
 const initState = {
@@ -12,6 +12,9 @@ export default function reduce(state = initState, action) {
             return {...state, isOpen: !state.isOpen};
         case ADD_FORM:
             console.log("Reduce add form", action.payload);
+            return {...state, forms: action.payload};
+        case GET_FORMS:
+            console.log("Reduce get forms", action.payload);
             return {...state, forms: action.payload};
         default:
             return state;

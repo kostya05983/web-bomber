@@ -23,6 +23,7 @@ export function getSchemes(offset, limit) {
 
             let response = await getSchemes;
 
+            console.log("Schemes", response);
             dispatch({type: types.GET_SCHEMES, payload: response.items});
         } catch (error) {
             console.error("Error while dispatch get schemes", error)
