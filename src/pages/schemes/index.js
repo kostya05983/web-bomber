@@ -34,9 +34,9 @@ class Schemes extends Component {
                 <NavigationBar title='Bomber'/>
                 <SchemeCreateModal
                     show={this.props.schemesStore.isOpen}
-                    addFunc={(schema) => {
-                        this.props.schemesFunctions.toggleCreateModal();
+                    addfunc={(schema) => {
                         this.createSchema(schema);
+                        this.props.schemesFunctions.toggleCreateModal();
                     }}
                     onHide={() => {
                         this.props.schemesFunctions.toggleCreateModal();

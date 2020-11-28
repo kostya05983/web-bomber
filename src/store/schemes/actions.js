@@ -20,9 +20,10 @@ export function getSchemes(offset, limit) {
 
             const getSchemes = SchemesService.getAll(offset, limit);
 
+
             let response = await getSchemes;
 
-            dispatch({type: types.GET_SCHEMES, payload: response});
+            dispatch({type: types.GET_SCHEMES, payload: response.items});
         } catch (error) {
             console.error("Error while dispatch get schemes", error)
         }

@@ -2,8 +2,9 @@ import {ACCESS_TOKEN} from "./constants";
 
 const request = (options) => {
     const headers = new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
     });
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
 
     if (localStorage.getItem(ACCESS_TOKEN)) {
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))

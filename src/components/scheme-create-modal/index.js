@@ -46,6 +46,8 @@ class SchemeCreateModal extends React.Component {
         this.addPathVariable = this.addPathVariable.bind(this);
         this.addRequestParam = this.addRequestParam.bind(this);
         this.handleBodyChange = this.handleBodyChange.bind(this);
+
+        this.unwrapDictionary = this.unwrapDictionary.bind(this);
     }
 
     createKeyValueElements(storedElement, func) {
@@ -151,11 +153,26 @@ class SchemeCreateModal extends React.Component {
         })
     }
 
+    unwrapDictionary(dict) {
+        let result = {};
+        Object.keys(dict).forEach(function (key) {
+            const entry = dict[key];
+            console.log("entry", entry);
+            let newKey = entry.key;
+            console.log("key", newKey);
+            result = {
+                ...result,
+                [newKey]: entry.value
+            }
+        });
+        console.log("headers", result);
+        return result;
+    }
 
     render() {
         return (
             <Modal
-                {...this.props}
+                show={this.props.show}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
@@ -212,15 +229,14 @@ class SchemeCreateModal extends React.Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="success" onClick={() => {
-                        this.props.addFunc(
+                        this.props.addfunc(
                             {
-                                headers: {},
-                                pathVariables: {},
-                                requestParams: {},
-                                body: {}
+                                headers: this.unwrapDictionary(this.state.headers),
+                                pathVariables: this.unwrapDictionary(this.state.pathVariables),
+                                requestParams: this.unwrapDictionary(this.state.requestParams),
+                                body: this.state.body
                             }
                         );
-
                     }}>Create</Button>
                     <Button variant="secondary" onClick={this.props.onHide}>Cancel</Button>
                 </Modal.Footer>
@@ -229,4 +245,4 @@ class SchemeCreateModal extends React.Component {
     }
 }
 
-export default SchemeCreateModal
+export default SchemeCreateModal;
