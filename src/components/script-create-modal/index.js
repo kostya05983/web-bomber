@@ -17,7 +17,7 @@ class ScriptCreateModal extends React.Component {
             address: "",
             requestMethod: "",
             rps: "",
-            time: ""
+            requestAmount: ""
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -52,7 +52,7 @@ class ScriptCreateModal extends React.Component {
 
     handleTimeChange(e) {
         this.setState({
-            time: e.target.value
+            requestAmount: e.target.value
         })
     }
 
@@ -90,8 +90,8 @@ class ScriptCreateModal extends React.Component {
                             <Form.Control placeholder="rps" onChange={this.handleRpsChange}/>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Time</Form.Label>
-                            <Form.Control placeholder="time" onChange={this.handleTimeChange}/>
+                            <Form.Label>RequestAmount</Form.Label>
+                            <Form.Control placeholder="RequestAmount" onChange={this.handleTimeChange}/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -104,7 +104,7 @@ class ScriptCreateModal extends React.Component {
                                 requestMethod: this.state.requestMethod,
                                 configuration: {
                                     rps: this.state.rps,
-                                    time: this.state.time
+                                    requestAmount: this.state.requestAmount
                                 }
                             }
                         )

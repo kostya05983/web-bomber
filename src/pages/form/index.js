@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import NavigationBar from "../../components/navigation-bar";
 import Container from "react-bootstrap/Container";
 import ElementsBar from "../../components/elements-bar";
-import FloatingButton from "../../components/floating-button";
+import RunButton from '../../components/run-button'
 import {bindActionCreators} from "redux/es/redux";
 import * as FormsFunmctions from '../../store/forms/actions'
 import * as ResultsFunctions from '../../store/results/actions'
@@ -20,7 +20,8 @@ class FormPage extends Component {
                 <NavigationBar title='Bomber'/>
                 <Container>
                     <ElementsBar/>
-                    <FloatingButton link="/forms" onClick={() => this.props.formsFunctions.toggleCreateModal()}/>
+                    <RunButton link="/forms"
+                               onClick={() => this.props.formsFunctions.runForm(this.props.match.params.formId)}/>
                 </Container>
             </div>
         )

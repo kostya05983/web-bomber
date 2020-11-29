@@ -6,7 +6,7 @@ import FloatingButton from "../../components/floating-button";
 import GridWrapper from "../../components/grid/GridWrapper";
 import bombImage from "../../assets/bomb.png";
 
-import * as FormsFunmctions from '../../store/forms/actions'
+import * as FormsFunctions from '../../store/forms/actions'
 import * as ScriptFunctions from '../../store/scripts/actions'
 import * as SchemesFunctions from '../../store/schemes/actions'
 import {bindActionCreators} from "redux";
@@ -35,7 +35,12 @@ class TestForms extends Component {
                 <Container>
                     <ElementsBar/>
                     <FloatingButton link="/forms" onClick={() => this.props.formsFunctions.toggleCreateModal()}/>
-                    <GridWrapper img={bombImage} items={this.props.formStore.forms}/>
+                    <GridWrapper img={bombImage} items={this.props.formStore.forms.map(function (item) {
+                        return {
+                            ...item,
+                            link: "/forms/" + item.id
+                        }
+                    })}/>
                 </Container>
             </div>
         )
@@ -52,7 +57,7 @@ function GlobalStateToProps(state) {
 
 function DispatchActionsToProps(dispatch) {
     return {
-        formsFunctions: bindActionCreators(FormsFunmctions, dispatch),
+        formsFunctions: bindActionCreators(FormsFunctions, dispatch),
         schemesFunctions: bindActionCreators(SchemesFunctions, dispatch),
         scriptsFunctions: bindActionCreators(ScriptFunctions, dispatch)
     }

@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useCallback} from "react";
 import PropTypes from "prop-types";
 import {CardDeck} from "react-bootstrap";
 import GridItem from ".";
+import {useHistory} from 'react-router-dom';
 
 import styles from './wrapper.css';
 

@@ -1,0 +1,21 @@
+:local(.float){
+    position:fixed;
+    z-index: 1;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#007bff;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+:local(.float:hover){
+    cursor: pointer;
+}
+
+:local(.my_float){
+    margin-top:22px;
+}
