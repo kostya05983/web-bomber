@@ -25,6 +25,22 @@ export function addForm(form) {
     }
 }
 
+export function runForm(formId) {
+    return async (dispatch, state) => {
+        try {
+            console.log("Disptach run form", formId);
+
+            const runForm = FormService.run(formId);
+
+            let response = await runForm;
+
+            dispatch({type: types.RUN_FORM, payload: response})
+        } catch (error) {
+            console.error("Error while disptach run form", error)
+        }
+    }
+}
+
 export function getForms(offset, limit) {
     return async (dispatch, getState) => {
         try {

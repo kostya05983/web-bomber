@@ -13,6 +13,7 @@ import Devices from "../containers/devices";
 import Scripts from "../pages/script";
 import Schemes from "../pages/schemes";
 import Forms from "../pages/forms";
+import FormPage from '../pages/form'
 
 export default function Routers() {
     return (
@@ -24,6 +25,7 @@ export default function Routers() {
                 <Route exact path='/schemes' component={Schemes}/>
                 <Route exact path='/scripts' component={Scripts}/>
                 <Route exact path='/forms' component={Forms}/>
+                <Route exact path='/forms/:formId' component={FormPage}/>
                 <Redirect to='/404'/>
             </Switch>
         </Router>
