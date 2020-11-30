@@ -160,7 +160,9 @@ class SchemeCreateModal extends React.Component {
 
     unwrapDictionary(dict) {
         let result = {};
-        Object.keys(dict).forEach(function (key) {
+        Object.keys(dict).filter(function (key) {
+            return key.length !== 0
+        }).forEach(function (key) {
             const entry = dict[key];
             console.log("entry", entry);
             let newKey = entry.key;
@@ -176,7 +178,9 @@ class SchemeCreateModal extends React.Component {
 
     unwrapRequestParams(dict) {
         let result = [];
-        Object.keys(dict).forEach(function (key) {
+        Object.keys(dict).filter(function (key) {
+            return key.length !== 0
+        }).forEach(function (key) {
             const entry = dict[key];
             console.log("entry", entry);
             let newKey = entry.key;
