@@ -7,11 +7,54 @@ import {bindActionCreators} from "redux/es/redux";
 import * as FormsFunmctions from '../../store/forms/actions'
 import * as ResultsFunctions from '../../store/results/actions'
 import connect from "react-redux/es/connect/connect";
+import CardGroup from "react-bootstrap/CardGroup";
+import Card from "react-bootstrap/Card";
+import bombImage from "../../assets/bomb.png";
+import {logger} from "redux-logger/src";
 
 
 class FormPage extends Component {
     componentDidMount() {
         this.props.resultsFunctions.getResults(this.props.match.params.formId)
+        this.formStatuses = this.formStatuses.bind(this);
+    }
+
+    formResults() {
+        var func = this.formStatuses;
+        return (<CardGroup>
+                {this.props.resultStore.results.map(function (item) {
+                    console.log("item data", item)
+                    return <Card>
+                        <Card.Img variant="top" src={bombImage}/>
+                        <Card.Body>
+                            <Card.Title>Bomber {item.bomberIp}</Card.Title>
+                            <Card.Text>
+                                amountTimeoutsRequests {item.amountTimeoutsRequests}
+                                <br/>
+                                amountPerStatus {func(item.amountPerStatus)}
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Footer>
+                            <small className="text-muted">Last updated 3 mins ago</small>
+                        </Card.Footer>
+                    </Card>
+                })
+                }
+            </CardGroup>
+        )
+    }
+
+    formStatuses(dict) {
+        console.log("dictionary", dict);
+        var filtered = Object.keys(dict).reduce(function (filtered, key) {
+            if (key !== 0) filtered[key] = dict[key];
+            return filtered;
+        }, {});
+        var str = "";
+        Object.keys(filtered).forEach(function (key) {
+            str += key + ":" + filtered[key];
+            str += "\n";
+        })
     }
 
     render() {
@@ -22,6 +65,7 @@ class FormPage extends Component {
                     <ElementsBar/>
                     <RunButton link="/forms"
                                onClick={() => this.props.formsFunctions.runForm(this.props.match.params.formId)}/>
+                    {this.formResults()}
                 </Container>
             </div>
         )
